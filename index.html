@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The 1997 Coffee and Space</title>
+  <link rel="icon" type="image/png" href="/img/logo.png">
+
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +29,7 @@
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <span class="logo-number">1997</span>
-        <span class="logo-text">Coffee & Space</span>
+        <img src="/img/logo.png" alt="Coffee & Space Logo" class="logo-img">
       </div>
 
       <nav class="nav-links" id="navLinks">
@@ -46,6 +47,8 @@
       </div>
     </div>
   </header>
+
+
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -123,101 +126,119 @@
       <p class="section-subtitle">Served with style, made with love</p>
     </div>
 
-    <div class="carousel-wrapper">
-      <div class="carousel-container">
-        <button class="carousel-btn prev" aria-label="Previous">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <div class="carousel-track">
-
-          <!-- Slide 1 -->
-          <div class="carousel-slide">
-            <div class="menu-card-image">
-              <div class="menu-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80"
-                  alt="Signature Coffee">
-                <div class="menu-overlay">
-                  <h3 class="menu-title-overlay">Signature Coffee</h3>
-                </div>
-              </div>
-              <div class="menu-badge-large">Signature</div>
-            </div>
+    <div class="menu-grid">
+      <!-- Card 1 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/kopiS.png" alt="Signature Coffee">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Signature Coffee</h3>
           </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-slide">
-            <div class="menu-card-image">
-              <div class="menu-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1600&q=80"
-                  alt="Black Coffee">
-                <div class="menu-overlay">
-                  <h3 class="menu-title-overlay">Black & White</h3>
-                </div>
-              </div>
-              <div class="menu-badge-large">Classic</div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-slide">
-            <div class="menu-card-image">
-              <div class="menu-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1600&q=80"
-                  alt="Ice Blend">
-                <div class="menu-overlay">
-                  <h3 class="menu-title-overlay">Ice Blend & Latte</h3>
-                </div>
-              </div>
-              <div class="menu-badge-large">Refreshing</div>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="carousel-slide">
-            <div class="menu-card-image">
-              <div class="menu-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1600&q=80"
-                  alt="Mocktail">
-                <div class="menu-overlay">
-                  <h3 class="menu-title-overlay">Mocktails & Mojitos</h3>
-                </div>
-              </div>
-              <div class="menu-badge-large">Fruity</div>
-            </div>
-          </div>
-
-          <!-- Slide 5 -->
-          <div class="carousel-slide">
-            <div class="menu-card-image">
-              <div class="menu-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1600&q=80"
-                  alt="Food">
-                <div class="menu-overlay">
-                  <h3 class="menu-title-overlay">Food & Snacks</h3>
-                </div>
-              </div>
-              <div class="menu-badge-large">Tasty</div>
-            </div>
-          </div>
-
         </div>
-
-        <button class="carousel-btn next" aria-label="Next">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <div class="menu-badge-large">Signature</div>
       </div>
 
-      <!-- Carousel Indicators -->
-      <div class="carousel-indicators">
-        <button class="indicator active" data-index="0"></button>
-        <button class="indicator" data-index="1"></button>
-        <button class="indicator" data-index="2"></button>
-        <button class="indicator" data-index="3"></button>
-        <button class="indicator" data-index="4"></button>
+      <!-- Card 2 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/kopi2.png" alt="Black Coffee">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Black & White</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Classic</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/icebland.png" alt="Ice Blend">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Ice Blend & Latte</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Refreshing</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/mocktails.png" alt="Mocktail">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Mocktails & Mojitos</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Fruity</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/makanan.png" alt="Food">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Food & Snacks</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Tasty</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/makanan2.png" alt="Food">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Food & Snacks</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Tasty</div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/burger.png" alt="Burger">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Burger</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Savory</div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/dessert.png" alt="Dessert">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Dessert</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Sweet</div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/sandwich.png" alt="Sandwich">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Sandwich</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Light</div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="menu-card">
+        <div class="menu-image-wrapper">
+          <img src="/glr/pastry.png" alt="Pastry">
+          <div class="menu-overlay">
+            <h3 class="menu-title-overlay">Pastry</h3>
+          </div>
+        </div>
+        <div class="menu-badge-large">Bakery</div>
       </div>
     </div>
   </section>
+
 
   <!-- Gallery Section -->
   <section id="gallery" class="gallery-section">
@@ -376,10 +397,10 @@
         </h3>
         <p class="footer-tagline">its not living if its not with you</p>
         <div class="social-icons">
-          <a href="https://www.instagram.com/USERNAME_KAMU" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/the1997_______" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://www.tiktok.com/@USERNAME_KAMU" target="_blank" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@the1997_______" target="_blank" aria-label="TikTok">
             <i class="fab fa-tiktok"></i>
           </a>
         </div>

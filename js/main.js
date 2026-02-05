@@ -401,7 +401,7 @@ Thank you for choosing The 1997 Coffee & Space! ☕✨
   const encodedMessage = encodeURIComponent(whatsappMessage)
 
   // WhatsApp number (replace with actual number)
-  const whatsappNumber = '6283806935439' // GANTI dengan nomor WhatsApp
+  const whatsappNumber = '6285117689797' // GANTI dengan nomor WhatsApp
 
   // Open WhatsApp
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
