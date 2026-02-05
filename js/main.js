@@ -357,35 +357,34 @@ lightboxStyles.textContent = `
 document.head.appendChild(lightboxStyles)
 
 // ================= WHATSAPP FORM =================
-const form = document.getElementById('whatsappForm')
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('whatsappForm')
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault()
+  if (!form) return // safety check
 
-  // Get form values
-  const name = document.getElementById('name').value.trim()
-  const phone = document.getElementById('phone').value.trim()
-  const date = document.getElementById('date').value
-  const time = document.getElementById('time').value
-  const message = document.getElementById('message').value.trim()
+  form.addEventListener('submit', function (e) {
+    e.preventDefault() // ⬅️ KUNCI ANTI REFRESH
 
-  // Validate
-  if (!name || !phone || !date || !time) {
-    alert('Please fill in all required fields')
-    return
-  }
+    const name = document.getElementById('name')?.value.trim()
+    const phone = document.getElementById('phone')?.value.trim()
+    const date = document.getElementById('date')?.value
+    const time = document.getElementById('time')?.value
+    const message = document.getElementById('message')?.value.trim()
 
-  // Format date
-  const dateObj = new Date(date)
-  const formattedDate = dateObj.toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+    if (!name || !phone || !date || !time) {
+      alert('Please fill in all required fields')
+      return
+    }
 
-  // Create WhatsApp message
-  const whatsappMessage = `
+    const dateObj = new Date(date)
+    const formattedDate = dateObj.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+
+    const whatsappMessage = `
 🌸 *Reservation Request* 🌸
 
 *Name:* ${name}
@@ -394,24 +393,21 @@ form.addEventListener('submit', function (e) {
 *Time:* ${time}
 ${message ? `*Special Requests:*\n${message}` : ''}
 
-Thank you for choosing The 1997 Coffee & Space! ☕✨
-  `.trim()
+Thank you for choosing Beer House Citra Raya 🍻
+    `.trim()
 
-  // Encode message
-  const encodedMessage = encodeURIComponent(whatsappMessage)
+    const whatsappNumber = '6285117689797' // TANPA +, spasi, strip
+    const whatsappURL =
+      'https://wa.me/' +
+      whatsappNumber +
+      '?text=' +
+      encodeURIComponent(whatsappMessage)
 
-  // WhatsApp number (replace with actual number)
-  const whatsappNumber = '6285117689797' // GANTI dengan nomor WhatsApp
+    // ⬇️ PALING AMAN
+    window.location.href = whatsappURL
 
-  // Open WhatsApp
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-  window.open(whatsappURL, '_blank')
-
-  // Show success message
-  showSuccessMessage()
-
-  // Reset form
-  form.reset()
+    form.reset()
+  })
 })
 
 // Success message animation
