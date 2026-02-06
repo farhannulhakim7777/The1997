@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('whatsappForm')
   if (!form) return
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', e => {
     e.preventDefault()
 
     const name = document.getElementById('name').value.trim()
@@ -383,19 +383,24 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     const whatsappText = `
-🍺 *Beer House Citra Raya – Reservation*
+🌸 *Reservation Request* 🌸
 
-👤 Nama: ${name}
-📞 Phone: ${phone}
-📅 Tanggal: ${formattedDate}
-⏰ Jam: ${time}
+*Name:* ${name}
+*Phone:* ${phone}
+*Date:* ${formattedDate}
+*Time:* ${time}
+*Special Requests:*
+${message || '-'}
 
-${message ? `📝 Catatan:\n${message}` : ''}
-    `.trim()
+Thank you for choosing The 1997 Coffee & Space! ☕✨
+`.trim()
 
-    const whatsappNumber = '6283806935439'
+    const whatsappNumber = '6285117689797'
     const waUrl =
-      'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappText)
+      'https://wa.me/' +
+      whatsappNumber +
+      '?text=' +
+      encodeURIComponent(whatsappText)
 
     // 🔥 WA DULU
     window.open(waUrl, '_blank')
@@ -407,8 +412,6 @@ ${message ? `📝 Catatan:\n${message}` : ''}
     }, 300)
   })
 })
-
-
 
 // Success message animation
 function showSuccessMessage () {
