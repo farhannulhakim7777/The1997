@@ -357,58 +357,58 @@ lightboxStyles.textContent = `
 document.head.appendChild(lightboxStyles)
 
 // ================= WHATSAPP FORM =================
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('whatsappForm')
+  if (!form) return
 
-  if (!form) return // safety check
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault() // ⬅️ KUNCI ANTI REFRESH
-
-    const name = document.getElementById('name')?.value.trim()
-    const phone = document.getElementById('phone')?.value.trim()
-    const date = document.getElementById('date')?.value
-    const time = document.getElementById('time')?.value
-    const message = document.getElementById('message')?.value.trim()
+    const name = document.getElementById('name').value.trim()
+    const phone = document.getElementById('phone').value.trim()
+    const date = document.getElementById('date').value
+    const time = document.getElementById('time').value
+    const message = document.getElementById('message').value.trim()
 
     if (!name || !phone || !date || !time) {
-      alert('Please fill in all required fields')
+      alert('Lengkapi semua data terlebih dahulu')
       return
     }
 
-    const dateObj = new Date(date)
-    const formattedDate = dateObj.toLocaleDateString('en-US', {
+    const formattedDate = new Date(date).toLocaleDateString('id-ID', {
       weekday: 'long',
-      year: 'numeric',
+      day: 'numeric',
       month: 'long',
-      day: 'numeric'
+      year: 'numeric'
     })
 
-    const whatsappMessage = `
-🌸 *Reservation Request* 🌸
+    const whatsappText = `
+🍺 *Beer House Citra Raya – Reservation*
 
-*Name:* ${name}
-*Phone:* ${phone}
-*Date:* ${formattedDate}
-*Time:* ${time}
-${message ? `*Special Requests:*\n${message}` : ''}
+👤 Nama: ${name}
+📞 Phone: ${phone}
+📅 Tanggal: ${formattedDate}
+⏰ Jam: ${time}
 
-Thank you for choosing Beer House Citra Raya 🍻
+${message ? `📝 Catatan:\n${message}` : ''}
     `.trim()
 
-    const whatsappNumber = '6285117689797' // TANPA +, spasi, strip
-    const whatsappURL =
-      'https://wa.me/' +
-      whatsappNumber +
-      '?text=' +
-      encodeURIComponent(whatsappMessage)
+    const whatsappNumber = '6283806935439'
+    const waUrl =
+      'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappText)
 
-    // ⬇️ PALING AMAN
-    window.location.href = whatsappURL
+    // 🔥 WA DULU
+    window.open(waUrl, '_blank')
 
-    form.reset()
+    // 🔥 baru animasi (AMAN)
+    setTimeout(() => {
+      showSuccessMessage()
+      form.reset()
+    }, 300)
   })
 })
+
+
 
 // Success message animation
 function showSuccessMessage () {

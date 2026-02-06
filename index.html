@@ -292,9 +292,9 @@
   <section id="location" class="location-section">
     <div class="location-container">
       <div class="location-content">
-        <div class="section-header">
-          <span class="section-label">Visit Us</span>
-          <h2 class="section-title">Find Your Space</h2>
+        <div class="section-header centered">
+          <span class="section-label centered">Visit Us</span>
+          <h2 class="section-title centered">Find Your Space</h2>
         </div>
 
         <div class="location-info-card">
@@ -352,31 +352,31 @@
     </div>
 
     <div class="contact-wrapper">
-      <form id="whatsappForm" class="contact-form">
+      <form id="whatsappForm" class="contact-form" novalidate>
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="Enter your name" required />
+          <input type="text" id="name" name="name" required />
         </div>
 
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="text" id="phone" placeholder="Enter your phone" required />
+          <input type="text" id="phone" name="phone" required />
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="date">Date</label>
-            <input type="date" id="date" required />
+            <input type="date" id="date" name="date" required />
           </div>
           <div class="form-group">
             <label for="time">Time</label>
-            <input type="time" id="time" required />
+            <input type="time" id="time" name="time" required />
           </div>
         </div>
 
         <div class="form-group">
           <label for="message">Special Requests</label>
-          <textarea id="message" rows="4" placeholder="Any special requests or notes..."></textarea>
+          <textarea id="message" name="message" rows="4"></textarea>
         </div>
 
         <button type="submit" class="btn-primary large">
@@ -384,6 +384,7 @@
           <span>Send via WhatsApp</span>
         </button>
       </form>
+
     </div>
   </section>
 
