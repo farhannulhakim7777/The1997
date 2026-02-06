@@ -24,21 +24,24 @@ const navbar = document.querySelector('.navbar')
 const hamburger = document.getElementById('hamburger')
 const navLinks = document.getElementById('navLinks')
 
-// Navbar background on scroll
-let lastScroll = 0
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset
+if (navbar && hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active')
+    hamburger.classList.toggle('active')
 
-  if (currentScroll > 100) {
-    navbar.style.background = 'rgba(255, 255, 255, 0.85)'
-    navbar.style.boxShadow = '0 4px 12px rgba(255, 182, 217, 0.15)'
-  } else {
-    navbar.style.background = 'rgba(255, 255, 255, 0.7)'
-    navbar.style.boxShadow = 'none'
-  }
+    const spans = hamburger.querySelectorAll('span')
+    if (navLinks.classList.contains('active')) {
+      spans[0].style.transform = 'rotate(45deg) translateY(8px)'
+      spans[1].style.opacity = '0'
+      spans[2].style.transform = 'rotate(-45deg) translateY(-8px)'
+    } else {
+      spans[0].style.transform = 'none'
+      spans[1].style.opacity = '1'
+      spans[2].style.transform = 'none'
+    }
+  })
+}
 
-  lastScroll = currentScroll
-})
 
 // Mobile menu toggle
 hamburger.addEventListener('click', () => {
@@ -84,162 +87,9 @@ document.querySelectorAll('.nav-link').forEach(link => {
   })
 })
 
-// ================= ENHANCED CAROUSEL =================
-const track = document.querySelector('.carousel-track')
-const slides = document.querySelectorAll('.carousel-slide')
-const nextBtn = document.querySelector('.carousel-btn.next')
-const prevBtn = document.querySelector('.carousel-btn.prev')
-const indicators = document.querySelectorAll('.indicator')
 
-let currentIndex = 0
-let isTransitioning = false
 
-// Update carousel position
-function updateCarousel (smooth = true) {
-  if (isTransitioning && smooth) return
 
-  isTransitioning = true
-  track.style.transform = `translateX(-${currentIndex * 100}%)`
-
-  // Update indicators
-  indicators.forEach((indicator, index) => {
-    if (index === currentIndex) {
-      indicator.classList.add('active')
-    } else {
-      indicator.classList.remove('active')
-    }
-  })
-
-  setTimeout(() => {
-    isTransitioning = false
-  }, 600)
-}
-
-// Next slide
-function nextSlide () {
-  currentIndex = (currentIndex + 1) % slides.length
-  updateCarousel()
-}
-
-// Previous slide
-function prevSlide () {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length
-  updateCarousel()
-}
-
-// Button event listeners
-nextBtn.addEventListener('click', nextSlide)
-prevBtn.addEventListener('click', prevSlide)
-
-// Indicator event listeners
-indicators.forEach((indicator, index) => {
-  indicator.addEventListener('click', () => {
-    currentIndex = index
-    updateCarousel()
-  })
-})
-
-// Keyboard navigation
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') {
-    nextSlide()
-  } else if (e.key === 'ArrowLeft') {
-    prevSlide()
-  }
-})
-
-// Touch/Swipe support
-let touchStartX = 0
-let touchEndX = 0
-let touchStartY = 0
-let touchEndY = 0
-
-track.addEventListener(
-  'touchstart',
-  e => {
-    touchStartX = e.touches[0].clientX
-    touchStartY = e.touches[0].clientY
-  },
-  { passive: true }
-)
-
-track.addEventListener(
-  'touchmove',
-  e => {
-    touchEndX = e.touches[0].clientX
-    touchEndY = e.touches[0].clientY
-  },
-  { passive: true }
-)
-
-track.addEventListener('touchend', () => {
-  const diffX = touchStartX - touchEndX
-  const diffY = Math.abs(touchStartY - touchEndY)
-
-  // Only swipe if horizontal movement is greater than vertical
-  if (Math.abs(diffX) > diffY) {
-    if (diffX > 50) {
-      nextSlide()
-    } else if (diffX < -50) {
-      prevSlide()
-    }
-  }
-})
-
-// Auto-play (optional - uncomment to enable)
-// let autoplayInterval
-// function startAutoplay() {
-//   autoplayInterval = setInterval(nextSlide, 5000)
-// }
-// function stopAutoplay() {
-//   clearInterval(autoplayInterval)
-// }
-// startAutoplay()
-// track.addEventListener('mouseenter', stopAutoplay)
-// track.addEventListener('mouseleave', startAutoplay)
-
-// ================= SCROLL ANIMATIONS =================
-const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -50px 0px'
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1'
-      entry.target.style.transform = 'translateY(0)'
-
-      // Stagger children animations if they exist
-      const children = entry.target.querySelectorAll(
-        '.stat-card, .gallery-item, .info-block'
-      )
-      children.forEach((child, index) => {
-        setTimeout(() => {
-          child.style.opacity = '1'
-          child.style.transform = 'translateY(0)'
-        }, index * 100)
-      })
-    }
-  })
-}, observerOptions)
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-  section.style.opacity = '0'
-  section.style.transform = 'translateY(30px)'
-  section.style.transition = 'opacity 0.8s ease, transform 0.8s ease'
-  observer.observe(section)
-})
-
-// Observe individual animated elements
-document
-  .querySelectorAll('.stat-card, .gallery-item, .info-block')
-  .forEach(el => {
-    el.style.opacity = '0'
-    el.style.transform = 'translateY(20px)'
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
-  })
 
 // ================= GALLERY LIGHTBOX EFFECT =================
 const galleryItems = document.querySelectorAll('.gallery-item')
@@ -403,7 +253,7 @@ Thank you for choosing The 1997 Coffee & Space! ☕✨
       encodeURIComponent(whatsappText)
 
     // 🔥 WA DULU
-    window.open(waUrl, '_blank')
+    window.location.href = waUrl
 
     // 🔥 baru animasi (AMAN)
     setTimeout(() => {
