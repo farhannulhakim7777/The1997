@@ -2,21 +2,145 @@
 <html lang="en">
 
 <head>
+  <!-- ── 1. CHARSET & VIEWPORT (wajib paling atas) ── -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The 1997 Coffee and Space</title>
-  <link rel="icon" type="image/png" href="/img/logo.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ── 2. TITLE (50–60 karakter, keyword di depan) ── -->
+  <title>The 1997 Coffee & Space | Kafe di Panongan, Tangerang</title>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- ── 3. META DESCRIPTION (150–160 karakter) ── -->
+  <meta name="description"
+    content="The 1997 Coffee & Space — kafe estetik di Panongan, Tangerang. Nikmati kopi signature, mocktail, makanan lezat, dan ruang komunitas yang nyaman. Buka setiap hari 10.00–00.00." />
 
-  <!-- Stylesheet -->
+  <!-- ── 4. KEYWORDS (lokal + produk utama) ── -->
+  <meta name="keywords"
+    content="kafe Panongan, coffee shop Tangerang, The 1997 Coffee, kafe estetik Tangerang, tempat ngopi Tangerang, kopi signature, mocktail, kafe komunitas, coffee and space, kafe study Tangerang Banten" />
+
+  <!-- ── 5. ROBOTS ── -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- ── 6. CANONICAL (cegah duplikat URL) ── -->
+  <!-- <link rel="canonical" href="https://www.1997coffee.space/" /> -->
+  <!-- [GANTI] domain di atas dengan domain aktual kamu -->
+
+  <!-- ── 7. AUTHOR & LANGUAGE ── -->
+  <meta name="author" content="The 1997 Coffee and Space" />
+  <meta name="language" content="Indonesian" />
+  <meta http-equiv="content-language" content="id" />
+  <html lang="id">
+  <!-- Pastikan tag <html> di atas juga pakai lang="id" -->
+
+  <!-- ── 8. THEME COLOR (warna brand di browser/PWA) ── -->
+  <meta name="theme-color" content="#ffb6d9" />
+  <meta name="msapplication-navbutton-color" content="#ffb6d9" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ffb6d9" />
+
+  <!-- ── 9. GEO / LOCAL SEO ── -->
+  <!-- <meta name="geo.region" content="ID-BT" />
+  <meta name="geo.placename" content="Panongan, Kabupaten Tangerang, Banten" />
+  <meta name="geo.position" content="-6.2000;106.5800" /> -->
+  <!-- [GANTI] koordinat lat;lng di atas dengan koordinat eksak lokasi kafe -->
+  <!-- <meta name="ICBM" content="-6.2000, 106.5800" /> -->
+
+  <!-- ── 10. OPEN GRAPH (preview di Facebook, WhatsApp, dsb) ── -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:site_name" content="The 1997 Coffee & Space" />
+  <meta property="og:title" content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
+  <meta property="og:description"
+    content="Kafe komunitas dengan kopi signature, mocktail segar, dan ruang yang nyaman untuk bekerja, belajar, atau sekadar bersantai. Buka setiap hari 10.00–00.00." />
+  <!-- <meta property="og:url" content="https://www.1997coffee.space/" />
+  <meta property="og:image" content="https://www.1997coffee.space/img/og-cover.jpg" /> -->
+  <!-- [GANTI] og:image dengan URL foto terbaik kafe kamu, ukuran ideal 1200×630px -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Interior The 1997 Coffee and Space Panongan Tangerang" />
+  <meta property="og:locale" content="id_ID" />
+
+  <!-- ── 11. TWITTER CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@the1997_______" />
+  <!-- [GANTI] username Twitter jika ada, atau hapus baris ini -->
+  <meta name="twitter:title" content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
+  <meta name="twitter:description"
+    content="Kopi signature, mocktail, makanan lezat — di ruang yang hangat dan komunitas yang nyaman. Kunjungi kami di Jl. Raya Panongan, Tangerang." />
+  <meta name="twitter:image" content="https://www.1997coffee.space/img/og-cover.jpg" />
+
+  <!-- ── 12. SCHEMA MARKUP — LocalBusiness + CafeOrCoffeeShop ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["CafeOrCoffeeShop", "LocalBusiness"],
+    "name": "The 1997 Coffee and Space",
+    "alternateName": "The 1997 Coffee & Space",
+    "url": "https://www.1997coffee.space/",
+    "logo": "https://www.1997coffee.space/img/logo.png",
+    "image": [
+      "https://www.1997coffee.space/img/foto1.jpg",
+      "https://www.1997coffee.space/img/foto2.jpg"
+    ],
+    "description": "The 1997 Coffee and Space adalah kafe komunitas di Panongan, Tangerang yang menyajikan kopi signature, mocktail, dan makanan lezat dalam suasana estetik yang nyaman.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Raya Panongan",
+      "addressLocality": "Panongan",
+      "addressRegion": "Tangerang",
+      "postalCode": "15710",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -6.2000,
+      "longitude": 106.5800
+    },
+    "telephone": "+6285117689797",
+    "email": "hello@1997coffee.space",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+        ],
+        "opens": "10:00",
+        "closes": "00:00"
+      }
+    ],
+    "servesCuisine": ["Coffee", "Beverages", "Snacks", "Burgers"],
+    "priceRange": "$$",
+    "currenciesAccepted": "IDR",
+    "paymentAccepted": "Cash, Credit Card, Transfer",
+    "sameAs": [
+      "https://www.instagram.com/the1997_______",
+      "https://www.tiktok.com/@the1997_______"
+    ],
+    "hasMap": "https://www.google.com/maps?q=Jl.+Raya+Panongan,+Kab.+Tangerang,+Banten"
+  }
+  </script>
+
+  <!-- ── 13. FAVICON & ICONS ── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+  <!-- [GANTI] path favicon sesuai file yang kamu punya, minimal /img/logo.png -->
+  <link rel="shortcut icon" href="/img/logo.png" />
+
+  <!-- ── 14. PERFORMANCE: Preconnect untuk font & CDN ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  <!-- ── 15. FONTS ── -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- ── 16. ICONS ── -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ── 17. STYLESHEET ── -->
   <link rel="stylesheet" href="/css/style.css" />
+
 </head>
 
 <body>
@@ -36,11 +160,11 @@
       </div>
 
       <nav class="nav-links" id="navLinks">
-        <a href="#home"     class="nav-link">Home</a>
-        <a href="#menu"     class="nav-link">Menu</a>
-        <a href="#gallery"  class="nav-link">Gallery</a>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#location" class="nav-link">Location</a>
-        <a href="#contact"  class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <a href="#contact" class="btn-reserve-nav">Reserve</a>
@@ -66,60 +190,28 @@
     </div>
   </section>
 
-  <!-- ==================== ABOUT ==================== -->
-  <section class="about-section">
-    <div class="section-header centered">
-      <span class="section-label">Our Story</span>
-      <h2 class="section-title">Where Dreams Meet Coffee</h2>
-    </div>
-
-    <div class="about-content">
-      <div class="about-text-wrapper">
-        <p class="about-text">
-          The 1997 Coffee and Space is a spacious, community-driven coffee house designed for thinkers, creators, and
-          dreamers. Inspired by 90s nostalgia and modern space aesthetics, we serve more than coffee — we serve experiences.
-        </p>
-      </div>
-
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-heart"></i></div>
-          <h3 class="stat-number">25K+</h3>
-          <p class="stat-label">Happy Customers</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-mug-hot"></i></div>
-          <h3 class="stat-number">50+</h3>
-          <p class="stat-label">Menu Items</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon"><i class="fas fa-star"></i></div>
-          <h3 class="stat-number">3</h3>
-          <p class="stat-label">Years Serving</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- ==================== MENU ==================== -->
   <section id="menu" class="menu-section">
 
     <div class="section-header centered">
-      <span class="section-label">Our Specialties</span>
+      <!-- <span class="section-label"></span> -->
       <h2 class="section-title">Our <em>Menu</em></h2>
-      <p class="section-subtitle">Explore our carefully curated selection</p>
+      <p class="section-subtitle">Specially Menu</p>
     </div>
 
     <!-- DRINKS CAROUSEL -->
     <div class="carousel-section">
       <div class="carousel-header">
         <div class="carousel-icon drinks">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
-            <line x1="6" x2="6.01" y1="2" y2="2"/>
-            <line x1="10" x2="10.01" y1="2" y2="2"/>
-            <line x1="14" x2="14.01" y1="2" y2="2"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+            <line x1="6" x2="6.01" y1="2" y2="2" />
+            <line x1="10" x2="10.01" y1="2" y2="2" />
+            <line x1="14" x2="14.01" y1="2" y2="2" />
           </svg>
         </div>
         <div>
@@ -195,9 +287,10 @@
     <div class="carousel-section">
       <div class="carousel-header">
         <div class="carousel-icon foods">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m3 11 18-5v12L3 14v-3z"/>
-            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 11 18-5v12L3 14v-3z" />
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
           </svg>
         </div>
         <div>
@@ -256,7 +349,49 @@
 
     <p class="swipe-hint">Swipe left or right to explore</p>
 
-  </section><!-- /menu -->
+  </section>
+  <!-- /menu -->
+
+
+
+ <!-- ==================== ABOUT ==================== -->
+  <section class="about-section">
+    <div class="section-header centered">
+      <span class="section-label"></span>
+      <h2 class="section-title">Our Story</h2>
+    </div>
+
+    <div class="about-content">
+      <div class="about-text-wrapper">
+        <p class="about-text">
+          The 1997 Coffee and Space is a spacious, community-driven coffee house designed for thinkers, creators, and
+          dreamers. Inspired by 90s nostalgia and modern space aesthetics, we serve more than coffee — we serve
+          experiences.
+        </p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-heart"></i></div>
+          <h3 class="stat-number">25K+</h3>
+          <p class="stat-label">Happy Customers</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-mug-hot"></i></div>
+          <h3 class="stat-number">50+</h3>
+          <p class="stat-label">Menu Items</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <h3 class="stat-number">3</h3>
+          <p class="stat-label">Years Serving</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
 
   <!-- ==================== GALLERY ==================== -->
   <section id="gallery" class="gallery-section">
@@ -336,8 +471,7 @@
 
       <div class="map-wrapper">
         <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
+          <iframe src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
@@ -433,4 +567,5 @@
   <script src="/js/main.js"></script>
 
 </body>
+
 </html>

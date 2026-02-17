@@ -421,3 +421,53 @@ function initCarousel(container) {
   /* ── Init ── */
   updateGradients();
 }
+
+
+// Ghost reveal — Coffee & Space
+(function () {
+  const el = document.querySelector('.title-line.accent');
+  if (!el) return;
+
+  const FADE_IN_MS  = 1400;
+  const HOLD_MS     = 1800;
+  const FADE_OUT_MS = 1000;
+  const PAUSE_MS    = 600;
+  const BLUR_MAX    = 20;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInCubic(t)  { return t * t * t; }
+
+  function animate(duration, easing, onTick, onDone) {
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var raw = Math.min((ts - startTime) / duration, 1);
+      onTick(easing(raw));
+      if (raw < 1) requestAnimationFrame(step);
+      else if (onDone) onDone();
+    }
+    requestAnimationFrame(step);
+  }
+
+  function runCycle() {
+    animate(FADE_IN_MS, easeOutCubic, function (p) {
+      el.style.opacity = p;
+      el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(1 - p, 2)).toFixed(2) + 'px)';
+    }, function () {
+      el.style.opacity = 1;
+      el.style.filter  = 'blur(0px)';
+      setTimeout(function () {
+        animate(FADE_OUT_MS, easeInCubic, function (p) {
+          el.style.opacity = 1 - p;
+          el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(p, 1.8)).toFixed(2) + 'px)';
+        }, function () {
+          el.style.opacity = 0;
+          el.style.filter  = 'blur(' + BLUR_MAX + 'px)';
+          setTimeout(runCycle, PAUSE_MS);
+        });
+      }, HOLD_MS);
+    });
+  }
+
+  setTimeout(runCycle, 400);
+})();

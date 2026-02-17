@@ -23,7 +23,7 @@
   --color-cyan-dark: #8dd9d6;
 
   /* === TEXT COLORS === */
-  --color-text-primary: #2d3436; /* Dark Charcoal - NOT pure black */
+  --color-text-primary: #2d3436;
   --color-text-secondary: #636e72; /* Medium Gray */
   --color-text-light: #b2bec3; /* Light Gray */
 
@@ -412,6 +412,10 @@ h6 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: fadeInUp 1s ease-out 0.7s both;
+  opacity: 0;
+  filter: blur(20px);
+  isolation: isolate;
+  contain: paint;
 }
 
 .hero-tagline {
@@ -467,6 +471,8 @@ h6 {
     transform: scaleY(1.5);
   }
 }
+
+
 
 /* ===============================================
    BUTTONS
@@ -813,12 +819,12 @@ h6 {
 
 .gradient-left {
   left: 0;
-  background: linear-gradient(to right, #1a1a1a, transparent);
+  /* background: linear-gradient(to right, #1a1a1a, transparent); */
 }
 
 .gradient-right {
   right: 0;
-  background: linear-gradient(to left, #1a1a1a, transparent);
+  /* background: linear-gradient(to left, #1a1a1a, transparent); */
 }
 
 .carousel-container.can-scroll-left .gradient-left,
@@ -866,7 +872,7 @@ h6 {
    ============================================ */
 .menu-card {
   flex-shrink: 0;
-  width: 280px;
+  width: 296px;
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -1036,11 +1042,11 @@ h6 {
   }
   
   .menu-card {
-    width: 260px;
+    width: 270px;
   }
   
   .menu-image-wrapper {
-    padding: 0.75rem;
+    padding: 0.90rem;
   }
   
   .menu-overlay {
