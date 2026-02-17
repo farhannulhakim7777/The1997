@@ -40,23 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function openMenu() {
     if (!hamburger || !navLinks) return;
     navLinks.classList.add('active');
+    hamburger.classList.add('active');
     hamburger.setAttribute('aria-expanded', 'true');
-    var spans = hamburger.querySelectorAll('span');
-    spans[0].style.transform = 'rotate(45deg) translateY(8px)';
-    spans[1].style.opacity   = '0';
-    spans[1].style.transform = 'scaleX(0)';
-    spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
   }
 
   function closeMenu() {
     if (!hamburger || !navLinks) return;
     navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
     hamburger.setAttribute('aria-expanded', 'false');
-    var spans = hamburger.querySelectorAll('span');
-    spans[0].style.transform = 'none';
-    spans[1].style.opacity   = '1';
-    spans[1].style.transform = 'none';
-    spans[2].style.transform = 'none';
   }
 
   if (hamburger && navLinks) {
