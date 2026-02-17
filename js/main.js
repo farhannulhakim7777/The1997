@@ -568,3 +568,163 @@ console.log('✨ The 1997 Coffee & Space - Website Loaded Successfully! ☕')
     });
   });
 })();
+
+
+
+(function() {
+  function initCarousel(container) {
+    const track = container.querySelector('.carousel-track');
+    if (!track) return;
+    
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = null;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    
+    function getMaxScroll() {
+      return Math.max(0, track.scrollWidth - container.clientWidth);
+    }
+    
+    function updateGradients() {
+      const maxScroll = getMaxScroll();
+      container.classList.toggle('can-scroll-left', currentTranslate < -5);
+      container.classList.toggle('can-scroll-right', currentTranslate > -(maxScroll - 5) && maxScroll > 0);
+    }
+    
+    function setPosition(x) {
+      currentTranslate = x;
+      track.style.transform = 'translateX(' + x + 'px)';
+      updateGradients();
+    }
+    
+    function momentum() {
+      if (Math.abs(velocity) < 0.3) {
+        cancelAnimationFrame(animationID);
+        animationID = null;
+        return;
+      }
+      
+      const maxScroll = getMaxScroll();
+      var newX = currentTranslate + velocity;
+      velocity *= 0.92;
+      
+      if (newX > 0) {
+        newX = 0;
+        velocity = 0;
+      } else if (newX < -maxScroll) {
+        newX = -maxScroll;
+        velocity = 0;
+      }
+      
+      setPosition(newX);
+      animationID = requestAnimationFrame(momentum);
+    }
+    
+    function startDrag(clientX) {
+      isDragging = true;
+      startX = clientX;
+      prevTranslate = currentTranslate;
+      lastX = clientX;
+      lastTime = Date.now();
+      velocity = 0;
+      
+      track.classList.add('dragging');
+      track.style.cursor = 'grabbing';
+      
+      if (animationID) {
+        cancelAnimationFrame(animationID);
+        animationID = null;
+      }
+    }
+    
+    function moveDrag(clientX) {
+      if (!isDragging) return;
+      
+      var deltaX = clientX - startX;
+      var newX = prevTranslate + deltaX;
+      
+      var maxScroll = getMaxScroll();
+      if (newX > 0) {
+        newX = newX * 0.25;
+      } else if (newX < -maxScroll) {
+        newX = -maxScroll + (newX + maxScroll) * 0.25;
+      }
+      
+      setPosition(newX);
+      
+      var now = Date.now();
+      var dt = now - lastTime;
+      if (dt > 0) {
+        velocity = (clientX - lastX) / dt * 15;
+      }
+      lastX = clientX;
+      lastTime = now;
+    }
+    
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      track.classList.remove('dragging');
+      track.style.cursor = 'grab';
+      
+      var maxScroll = getMaxScroll();
+      
+      if (currentTranslate > 0) {
+        setPosition(0);
+      } else if (currentTranslate < -maxScroll) {
+        setPosition(-maxScroll);
+      } else {
+        momentum();
+      }
+    }
+    
+    // Mouse Events
+    track.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      startDrag(e.clientX);
+    });
+    
+    track.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      moveDrag(e.clientX);
+    });
+    
+    track.addEventListener('mouseup', endDrag);
+    track.addEventListener('mouseleave', endDrag);
+    
+    // Touch Events
+    track.addEventListener('touchstart', function(e) {
+      startDrag(e.touches[0].clientX);
+    }, { passive: true });
+    
+    track.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      moveDrag(e.touches[0].clientX);
+    }, { passive: true });
+    
+    track.addEventListener('touchend', endDrag);
+    track.addEventListener('touchcancel', endDrag);
+    
+    // Init
+    updateGradients();
+    
+    window.addEventListener('resize', function() {
+      var maxScroll = getMaxScroll();
+      if (currentTranslate < -maxScroll) {
+        setPosition(-maxScroll);
+      }
+    });
+  }
+  
+  // Init all carousels
+  document.addEventListener('DOMContentLoaded', function() {
+    var carousels = document.querySelectorAll('.carousel-container');
+    carousels.forEach(initCarousel);
+  });
+})();
