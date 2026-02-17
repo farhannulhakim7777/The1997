@@ -118,126 +118,143 @@
     </div>
   </section>
 
-  <!-- Menu Section -->
   <section id="menu" class="menu-section">
-    <div class="section-header centered">
-      <span class="section-label">Our Specialties</span>
-      <h2 class="section-title">Crafted with Soul</h2>
-      <p class="section-subtitle">Served with style, made with love</p>
-    </div>
+  <!-- Section Header -->
+  <div class="section-header centered">
+    <span class="section-label">Our Specialties</span>
+    <h2 class="section-title">MENU</h2>
+    <p class="section-subtitle">Explore our carefully curated selection</p>
+  </div>
 
-    <div class="menu-grid">
-      <!-- Card 1 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/kopiS.png" alt="Signature Coffee">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Signature Coffee</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Signature</div>
+  <!-- DRINKS CAROUSEL -->
+  <div class="carousel-section">
+    <div class="carousel-header">
+      <div class="carousel-icon drinks">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6.01" y1="2" y2="2"/><line x1="10" x2="10.01" y1="2" y2="2"/><line x1="14" x2="14.01" y1="2" y2="2"/></svg>
       </div>
-
-      <!-- Card 2 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/kopi2.png" alt="Black Coffee">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Black & White</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Classic</div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/icebland.png" alt="Ice Blend">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Ice Blend & Latte</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Refreshing</div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/mocktails.png" alt="Mocktail">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Mocktails & Mojitos</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Fruity</div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/makanan.png" alt="Food">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Food & Snacks</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Tasty</div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/makanan2.png" alt="Food">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Food & Snacks</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Tasty</div>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/burger.png" alt="Burger">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Burger</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Savory</div>
-      </div>
-
-      <!-- Card 8 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/dessert.png" alt="Dessert">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Dessert</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Sweet</div>
-      </div>
-
-      <!-- Card 9 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/sandwich.png" alt="Sandwich">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Sandwich</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Light</div>
-      </div>
-
-      <!-- Card 10 -->
-      <div class="menu-card">
-        <div class="menu-image-wrapper">
-          <img src="/glr/pastry.png" alt="Pastry">
-          <div class="menu-overlay">
-            <h3 class="menu-title-overlay">Pastry</h3>
-          </div>
-        </div>
-        <div class="menu-badge-large">Bakery</div>
+      <div>
+        <h3 class="carousel-title">Beverages</h3>
+        <p class="carousel-hint">Swipe to explore our drinks</p>
       </div>
     </div>
-  </section>
+    
+    <div class="carousel-container" id="drinks-carousel">
+      <div class="carousel-track">
+        <!-- Card 1 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/kopiS.png" alt="Signature Coffee" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Signature Coffee</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large signature">Signature</div>
+          <h4 class="card-title">Signature Coffee</h4>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/kopi2.png" alt="Black Coffee" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Black & White</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large classic">Classic</div>
+          <h4 class="card-title">Black & White</h4>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/icebland.png" alt="Ice Blend" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Ice Blend & Latte</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large refreshing">Refreshing</div>
+          <h4 class="card-title">Ice Blend & Latte</h4>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/mocktails.png" alt="Mocktail" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Mocktails & Mojitos</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large fruity">Fruity</div>
+          <h4 class="card-title">Mocktails & Mojitos</h4>
+        </div>
+      </div>
+      <!-- Gradient indicators -->
+      <div class="gradient-left"></div>
+      <div class="gradient-right"></div>
+    </div>
+  </div>
+
+  <!-- FOODS CAROUSEL -->
+  <div class="carousel-section">
+    <div class="carousel-header">
+      <div class="carousel-icon foods">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+      </div>
+      <div>
+        <h3 class="carousel-title">Food & Snacks</h3>
+        <p class="carousel-hint">Swipe to explore our dishes</p>
+      </div>
+    </div>
+    
+    <div class="carousel-container" id="foods-carousel">
+      <div class="carousel-track">
+        <!-- Card 5 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/makanan.png" alt="Food" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Food & Snacks</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large tasty">Tasty</div>
+          <h4 class="card-title">Food & Snacks</h4>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/makanan2.png" alt="Food" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Food & Snacks</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large tasty">Tasty</div>
+          <h4 class="card-title">Food & Snacks</h4>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="menu-card">
+          <div class="menu-image-wrapper">
+            <img src="/glr/burger.png" alt="Burger" draggable="false">
+            <div class="menu-overlay">
+              <h3 class="menu-title-overlay">Burger</h3>
+            </div>
+          </div>
+          <div class="menu-badge-large savory">Savory</div>
+          <h4 class="card-title">Burger</h4>
+        </div>
+      </div>
+      <!-- Gradient indicators -->
+      <div class="gradient-left"></div>
+      <div class="gradient-right"></div>
+    </div>
+  </div>
+
+  <!-- Swipe hint -->
+  <p class="swipe-hint">
+    <span></span> Swipe left or right to explore <span></span>
+  </p>
+</section>
 
 
   <!-- Gallery Section -->

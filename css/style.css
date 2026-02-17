@@ -678,83 +678,335 @@ h6 {
   font-weight: 500;
 }
 
-/* ===============================================
-   MENU SECTION
-   =============================================== */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+/* ============================================
+   MENU SECTION - BASE STYLES
+   ============================================ */
+.menu-section {
+  padding: 5rem 1.5rem;
+  background: #1a1a1a;
+  min-height: 100vh;
 }
 
-.menu-card {
-  max-width: 600px;
-  width: 100%;
+/* Section Header */
+.section-header.centered {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-label {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  max-width: 500px;
   margin: 0 auto;
 }
 
+/* ============================================
+   CAROUSEL SECTION
+   ============================================ */
+.carousel-section {
+  margin-bottom: 4rem;
+}
+
+.carousel-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.carousel-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-icon.drinks {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.carousel-icon.foods {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fb923c;
+}
+
+.carousel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.carousel-hint {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0 0;
+}
+
+/* ============================================
+   CAROUSEL CONTAINER & TRACK
+   ============================================ */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0.5rem;
+  margin: 0 -0.5rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.carousel-track.dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+/* Gradient indicators */
+.gradient-left,
+.gradient-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-left {
+  left: 0;
+  background: linear-gradient(to right, #1a1a1a, transparent);
+}
+
+.gradient-right {
+  right: 0;
+  background: linear-gradient(to left, #1a1a1a, transparent);
+}
+
+.carousel-container.can-scroll-left .gradient-left {
+  opacity: 1;
+}
+
+.carousel-container.can-scroll-right .gradient-right {
+  opacity: 1;
+}
+
+/* ============================================
+   MENU CARD STYLES
+   ============================================ */
+.menu-card {
+  flex-shrink: 0;
+  width: 280px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+}
+
 .menu-image-wrapper {
+  position: relative;
   width: 100%;
-  height: auto;
+  aspect-ratio: 4/5;
+  background: #ffffff;
+  border-radius: 24px;
   padding: 1rem;
-  background: #fff;
-  border-radius: 20px; /* 🔥 bikin sudut halus */
-  overflow: hidden; /* penting supaya gambar ikut radius */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.menu-card:hover .menu-image-wrapper {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .menu-image-wrapper img {
   width: 100%;
-  max-height: 600px;
-  object-fit: contain;
-  border-radius: 18px; /* biar gambar juga halus */
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
   display: block;
+  pointer-events: none;
+  transition: transform 0.5s ease;
 }
 
-/* .menu-overlay {
+.menu-card:hover .menu-image-wrapper img {
+  transform: scale(1.08);
+}
+
+/* Overlay */
+.menu-overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.15),
-    transparent
-  );
+  inset: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  border-radius: 16px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 1.5rem;
+  padding-bottom: 1.5rem;
   opacity: 0;
-  transition: opacity 0.35s ease;
-} */
+  transition: opacity 0.4s ease;
+}
 
 .menu-card:hover .menu-overlay {
   opacity: 1;
 }
 
 .menu-title-overlay {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 600;
   text-align: center;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
 }
 
+.menu-card:hover .menu-title-overlay {
+  transform: translateY(0);
+}
+
+/* Card title below image */
+.card-title {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.menu-card:hover .card-title {
+  color: #f59e0b;
+}
+
+/* ============================================
+   BADGE STYLES
+   ============================================ */
 .menu-badge-large {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 0.4rem 0.9rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.4rem 1rem;
   border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  z-index: 10;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+.menu-card:hover .menu-badge-large {
+  transform: scale(1.1);
+}
+
+/* Badge colors */
+.menu-badge-large.signature {
+  background: rgba(254, 243, 199, 0.9);
+  color: #92400e;
+}
+
+.menu-badge-large.classic {
+  background: rgba(243, 244, 246, 0.9);
+  color: #374151;
+}
+
+.menu-badge-large.refreshing {
+  background: rgba(207, 250, 254, 0.9);
+  color: #155e75;
+}
+
+.menu-badge-large.fruity {
+  background: rgba(254, 226, 226, 0.9);
+  color: #991b1b;
+}
+
+.menu-badge-large.tasty {
+  background: rgba(255, 237, 213, 0.9);
+  color: #9a3412;
+}
+
+.menu-badge-large.savory {
+  background: rgba(254, 249, 195, 0.9);
+  color: #854d0e;
+}
+
+/* ============================================
+   SWIPE HINT
+   ============================================ */
+.swipe-hint {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.swipe-hint span {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: #4b5563;
+  border-radius: 1px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
   .menu-card {
-    max-width: 100%;
+    width: 260px;
+  }
+  
+  .menu-image-wrapper {
+    padding: 0.75rem;
+  }
+  
+  .menu-overlay {
+    inset: 0.75rem;
   }
 }
 

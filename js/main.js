@@ -404,3 +404,167 @@ window.addEventListener('load', () => {
 })
 
 console.log('✨ The 1997 Coffee & Space - Website Loaded Successfully! ☕')
+
+
+
+// carousel menu
+
+(function() {
+  // Initialize all carousels
+  const carousels = document.querySelectorAll('.carousel-container');
+  
+  carousels.forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let translateX = 0;
+    let prevTranslateX = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let animationId = null;
+    
+    // Check boundaries and update gradients
+    function updateGradients() {
+      const maxScroll = track.scrollWidth - container.clientWidth;
+      container.classList.toggle('can-scroll-left', translateX < 0);
+      container.classList.toggle('can-scroll-right', translateX > -maxScroll && maxScroll > 0);
+    }
+    
+    // Momentum animation
+    function momentum() {
+      if (Math.abs(velocity) < 0.5) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+        return;
+      }
+      
+      translateX += velocity;
+      velocity *= 0.95; // friction
+      
+      // Boundary check
+      const maxScroll = Math.max(0, track.scrollWidth - container.clientWidth);
+      
+      if (translateX > 0) {
+        translateX = 0;
+        velocity = 0;
+      } else if (translateX < -maxScroll) {
+        translateX = -maxScroll;
+        velocity = 0;
+      }
+      
+      track.style.transform = `translateX(${translateX}px)`;
+      updateGradients();
+      
+      animationId = requestAnimationFrame(momentum);
+    }
+    
+    // Drag start
+    function dragStart(x) {
+      isDragging = true;
+      startX = x;
+      prevTranslateX = translateX;
+      lastX = x;
+      lastTime = Date.now();
+      velocity = 0;
+      
+      track.classList.add('dragging');
+      
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    }
+    
+    // Drag move
+    function dragMove(x) {
+      if (!isDragging) return;
+      
+      const deltaX = x - startX;
+      let newTranslate = prevTranslateX + deltaX;
+      
+      // Resistance at boundaries
+      const maxScroll = Math.max(0, track.scrollWidth - container.clientWidth);
+      
+      if (newTranslate > 0) {
+        newTranslate = newTranslate * 0.3;
+      } else if (newTranslate < -maxScroll) {
+        const overflow = newTranslate + maxScroll;
+        newTranslate = -maxScroll + overflow * 0.3;
+      }
+      
+      translateX = newTranslate;
+      track.style.transform = `translateX(${translateX}px)`;
+      updateGradients();
+      
+      // Calculate velocity
+      const now = Date.now();
+      const dt = now - lastTime;
+      if (dt > 0) {
+        velocity = (x - lastX) / dt * 16;
+      }
+      lastX = x;
+      lastTime = now;
+    }
+    
+    // Drag end
+    function dragEnd() {
+      if (!isDragging) return;
+      isDragging = false;
+      track.classList.remove('dragging');
+      
+      // Snap back if out of bounds
+      const maxScroll = Math.max(0, track.scrollWidth - container.clientWidth);
+      
+      if (translateX > 0) {
+        translateX = 0;
+        track.style.transform = `translateX(${translateX}px)`;
+        updateGradients();
+      } else if (translateX < -maxScroll) {
+        translateX = -maxScroll;
+        track.style.transform = `translateX(${translateX}px)`;
+        updateGradients();
+      } else {
+        // Apply momentum
+        momentum();
+      }
+    }
+    
+    // Mouse events
+    track.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      dragStart(e.clientX);
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+      dragMove(e.clientX);
+    });
+    
+    window.addEventListener('mouseup', dragEnd);
+    
+    // Touch events
+    track.addEventListener('touchstart', (e) => {
+      dragStart(e.touches[0].clientX);
+    }, { passive: true });
+    
+    track.addEventListener('touchmove', (e) => {
+      dragMove(e.touches[0].clientX);
+    }, { passive: true });
+    
+    track.addEventListener('touchend', dragEnd);
+    
+    // Initial gradient check
+    updateGradients();
+    
+    // Update on resize
+    window.addEventListener('resize', () => {
+      const maxScroll = Math.max(0, track.scrollWidth - container.clientWidth);
+      if (translateX < -maxScroll) {
+        translateX = -maxScroll;
+        track.style.transform = `translateX(${translateX}px)`;
+      }
+      updateGradients();
+    });
+  });
+})();
