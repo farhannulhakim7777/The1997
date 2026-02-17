@@ -442,3 +442,62 @@ function initCarousel(container) {
   // ── Init ──
   updateGradients();
 }
+
+
+// ─── GHOST REVEAL — Coffee & Space ──────────────────────────────────────────
+
+(function () {
+  var el = document.querySelector('.title-line.accent');
+  if (!el) return;
+
+  var FADE_IN_MS  = 1400;
+  var HOLD_MS     = 1800;
+  var FADE_OUT_MS = 1000;
+  var PAUSE_MS    = 600;
+  var BLUR_MAX    = 20;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInCubic(t)  { return t * t * t; }
+
+  function animate(duration, easing, onTick, onDone) {
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var raw = Math.min((ts - startTime) / duration, 1);
+      onTick(easing(raw));
+      if (raw < 1) requestAnimationFrame(step);
+      else if (onDone) onDone();
+    }
+    requestAnimationFrame(step);
+  }
+
+  function runCycle() {
+    // FASE 1 — muncul
+    animate(FADE_IN_MS, easeOutCubic, function (p) {
+      el.style.opacity = p;
+      el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(1 - p, 2)).toFixed(2) + 'px)';
+    }, function () {
+      el.style.opacity = 1;
+      el.style.filter  = 'blur(0px)';
+
+      // FASE 2 — diam
+      setTimeout(function () {
+
+        // FASE 3 — menghilang
+        animate(FADE_OUT_MS, easeInCubic, function (p) {
+          el.style.opacity = 1 - p;
+          el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(p, 1.8)).toFixed(2) + 'px)';
+        }, function () {
+          el.style.opacity = 0;
+          el.style.filter  = 'blur(' + BLUR_MAX + 'px)';
+
+          // FASE 4 — jeda lalu ulang
+          setTimeout(runCycle, PAUSE_MS);
+        });
+
+      }, HOLD_MS);
+    });
+  }
+
+  setTimeout(runCycle, 400);
+})();
