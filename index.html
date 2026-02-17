@@ -1,84 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-  <!-- ── 1. CHARSET & VIEWPORT (wajib paling atas) ── -->
+  <!-- ── 1. CHARSET & VIEWPORT ── -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ── 2. TITLE (50–60 karakter, keyword di depan) ── -->
+  <!-- ── 2. TITLE ── -->
   <title>The 1997 Coffee & Space | Kafe di Panongan, Tangerang</title>
 
-  <!-- ── 3. META DESCRIPTION (150–160 karakter) ── -->
+  <!-- ── 3. META DESCRIPTION ── -->
   <meta name="description"
     content="The 1997 Coffee & Space — kafe estetik di Panongan, Tangerang. Nikmati kopi signature, mocktail, makanan lezat, dan ruang komunitas yang nyaman. Buka setiap hari 10.00–00.00." />
 
-  <!-- ── 4. KEYWORDS (lokal + produk utama) ── -->
+  <!-- ── 4. KEYWORDS ── -->
   <meta name="keywords"
     content="kafe Panongan, coffee shop Tangerang, The 1997 Coffee, kafe estetik Tangerang, tempat ngopi Tangerang, kopi signature, mocktail, kafe komunitas, coffee and space, kafe study Tangerang Banten" />
 
   <!-- ── 5. ROBOTS ── -->
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-  <!-- ── 6. CANONICAL (cegah duplikat URL) ── -->
-  <!-- <link rel="canonical" href="https://www.1997coffee.space/" /> -->
-  <!-- [GANTI] domain di atas dengan domain aktual kamu -->
-
-  <!-- ── 7. AUTHOR & LANGUAGE ── -->
+  <!-- ── 6. AUTHOR & LANGUAGE ── -->
   <meta name="author" content="The 1997 Coffee and Space" />
   <meta name="language" content="Indonesian" />
   <meta http-equiv="content-language" content="id" />
-  <html lang="id">
-  <!-- Pastikan tag <html> di atas juga pakai lang="id" -->
 
-  <!-- ── 8. THEME COLOR (warna brand di browser/PWA) ── -->
+  <!-- ── 7. THEME COLOR ── -->
   <meta name="theme-color" content="#ffb6d9" />
   <meta name="msapplication-navbutton-color" content="#ffb6d9" />
   <meta name="apple-mobile-web-app-status-bar-style" content="#ffb6d9" />
 
-  <!-- ── 9. GEO / LOCAL SEO ── -->
-  <!-- <meta name="geo.region" content="ID-BT" />
-  <meta name="geo.placename" content="Panongan, Kabupaten Tangerang, Banten" />
-  <meta name="geo.position" content="-6.2000;106.5800" /> -->
-  <!-- [GANTI] koordinat lat;lng di atas dengan koordinat eksak lokasi kafe -->
-  <!-- <meta name="ICBM" content="-6.2000, 106.5800" /> -->
-
-  <!-- ── 10. OPEN GRAPH (preview di Facebook, WhatsApp, dsb) ── -->
-  <meta property="og:type" content="restaurant" />
-  <meta property="og:site_name" content="The 1997 Coffee & Space" />
-  <meta property="og:title" content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
-  <meta property="og:description"
-    content="Kafe komunitas dengan kopi signature, mocktail segar, dan ruang yang nyaman untuk bekerja, belajar, atau sekadar bersantai. Buka setiap hari 10.00–00.00." />
-  <!-- <meta property="og:url" content="https://www.1997coffee.space/" />
-  <meta property="og:image" content="https://www.1997coffee.space/img/og-cover.jpg" /> -->
-  <!-- [GANTI] og:image dengan URL foto terbaik kafe kamu, ukuran ideal 1200×630px -->
-  <meta property="og:image:width" content="1200" />
+  <!-- ── 8. OPEN GRAPH ── -->
+  <meta property="og:type"        content="restaurant" />
+  <meta property="og:site_name"   content="The 1997 Coffee & Space" />
+  <meta property="og:title"       content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
+  <meta property="og:description" content="Kafe komunitas dengan kopi signature, mocktail segar, dan ruang yang nyaman. Buka setiap hari 10.00–00.00." />
+  <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Interior The 1997 Coffee and Space Panongan Tangerang" />
-  <meta property="og:locale" content="id_ID" />
+  <meta property="og:image:alt"    content="Interior The 1997 Coffee and Space Panongan Tangerang" />
+  <meta property="og:locale"      content="id_ID" />
 
-  <!-- ── 11. TWITTER CARD ── -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@the1997_______" />
-  <!-- [GANTI] username Twitter jika ada, atau hapus baris ini -->
-  <meta name="twitter:title" content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
-  <meta name="twitter:description"
-    content="Kopi signature, mocktail, makanan lezat — di ruang yang hangat dan komunitas yang nyaman. Kunjungi kami di Jl. Raya Panongan, Tangerang." />
-  <meta name="twitter:image" content="https://www.1997coffee.space/img/og-cover.jpg" />
+  <!-- ── 9. TWITTER CARD ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="The 1997 Coffee & Space | Kafe Estetik di Panongan, Tangerang" />
+  <meta name="twitter:description" content="Kopi signature, mocktail, makanan lezat di Jl. Raya Panongan, Tangerang." />
 
-  <!-- ── 12. SCHEMA MARKUP — LocalBusiness + CafeOrCoffeeShop ── -->
+  <!-- ── 10. SCHEMA ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": ["CafeOrCoffeeShop", "LocalBusiness"],
     "name": "The 1997 Coffee and Space",
     "alternateName": "The 1997 Coffee & Space",
-    "url": "https://www.1997coffee.space/",
-    "logo": "https://www.1997coffee.space/img/logo.png",
-    "image": [
-      "https://www.1997coffee.space/img/foto1.jpg",
-      "https://www.1997coffee.space/img/foto2.jpg"
-    ],
     "description": "The 1997 Coffee and Space adalah kafe komunitas di Panongan, Tangerang yang menyajikan kopi signature, mocktail, dan makanan lezat dalam suasana estetik yang nyaman.",
     "address": {
       "@type": "PostalAddress",
@@ -88,59 +61,40 @@
       "postalCode": "15710",
       "addressCountry": "ID"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -6.2000,
-      "longitude": 106.5800
-    },
     "telephone": "+6285117689797",
     "email": "hello@1997coffee.space",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-        ],
-        "opens": "10:00",
-        "closes": "00:00"
-      }
-    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "00:00"
+    }],
     "servesCuisine": ["Coffee", "Beverages", "Snacks", "Burgers"],
     "priceRange": "$$",
-    "currenciesAccepted": "IDR",
-    "paymentAccepted": "Cash, Credit Card, Transfer",
     "sameAs": [
       "https://www.instagram.com/the1997_______",
       "https://www.tiktok.com/@the1997_______"
-    ],
-    "hasMap": "https://www.google.com/maps?q=Jl.+Raya+Panongan,+Kab.+Tangerang,+Banten"
+    ]
   }
   </script>
 
-  <!-- ── 13. FAVICON & ICONS ── -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-  <!-- [GANTI] path favicon sesuai file yang kamu punya, minimal /img/logo.png -->
+  <!-- ── 11. FAVICON ── -->
   <link rel="shortcut icon" href="/img/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/logo.png" />
 
-  <!-- ── 14. PERFORMANCE: Preconnect untuk font & CDN ── -->
+  <!-- ── 12. PRECONNECT ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-  <!-- ── 15. FONTS ── -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <!-- ── 13. FONTS ── -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- ── 16. ICONS ── -->
+  <!-- ── 14. ICONS ── -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- ── 17. STYLESHEET ── -->
+  <!-- ── 15. STYLESHEET ── -->
   <link rel="stylesheet" href="/css/style.css" />
-
 </head>
 
 <body>
@@ -153,25 +107,25 @@
   </div>
 
   <!-- ==================== NAVBAR ==================== -->
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <div class="nav-container">
       <div class="logo">
         <img src="/img/logo.png" alt="Coffee & Space Logo" class="logo-img">
       </div>
 
       <nav class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#home"     class="nav-link">Home</a>
+        <a href="#menu"     class="nav-link">Menu</a>
+        <a href="#gallery"  class="nav-link">Gallery</a>
         <a href="#location" class="nav-link">Location</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact"  class="nav-link">Contact</a>
       </nav>
 
       <a href="#contact" class="btn-reserve-nav">Reserve</a>
 
-      <div class="hamburger" id="hamburger">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -181,7 +135,7 @@
     <div class="hero-content">
       <h1 class="hero-title">
         <span class="title-line">The 1997</span>
-        <span class="title-line accent">Coffee & Space</span>
+        <span class="title-line accent">Coffee &amp; Space</span>
       </h1>
     </div>
     <div class="hero-scroll">
@@ -190,13 +144,12 @@
     </div>
   </section>
 
- 
+  
 
   <!-- ==================== MENU ==================== -->
   <section id="menu" class="menu-section">
 
     <div class="section-header centered">
-      <!-- <span class="section-label"></span> -->
       <h2 class="section-title">Our <em>Menu</em></h2>
       <p class="section-subtitle">Specially Menu</p>
     </div>
@@ -207,11 +160,11 @@
         <div class="carousel-icon drinks">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-            <line x1="6" x2="6.01" y1="2" y2="2" />
-            <line x1="10" x2="10.01" y1="2" y2="2" />
-            <line x1="14" x2="14.01" y1="2" y2="2" />
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+            <line x1="6" x2="6.01" y1="2" y2="2"/>
+            <line x1="10" x2="10.01" y1="2" y2="2"/>
+            <line x1="14" x2="14.01" y1="2" y2="2"/>
           </svg>
         </div>
         <div>
@@ -222,15 +175,12 @@
 
       <div class="carousel-container" id="drinks-carousel">
         <div class="carousel-track">
-
           <div class="menu-card">
             <div class="menu-image-wrapper">
               <img src="/glr/kopiS.png" alt="Signature Coffee"
                 onerror="this.style.background='linear-gradient(135deg,#78350f,#d97706)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Signature Coffee</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Signature Coffee</h3></div>
             </div>
             <div class="menu-badge-large signature">Signature</div>
             <h4 class="card-title">Signature Coffee</h4>
@@ -241,9 +191,7 @@
               <img src="/glr/kopi2.png" alt="Black & White"
                 onerror="this.style.background='linear-gradient(135deg,#1c1917,#57534e)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Black &amp; White</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Black &amp; White</h3></div>
             </div>
             <div class="menu-badge-large classic">Classic</div>
             <h4 class="card-title">Black &amp; White</h4>
@@ -254,9 +202,7 @@
               <img src="/glr/icebland.png" alt="Ice Blend"
                 onerror="this.style.background='linear-gradient(135deg,#0e7490,#67e8f9)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Ice Blend &amp; Latte</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Ice Blend &amp; Latte</h3></div>
             </div>
             <div class="menu-badge-large refreshing">Refreshing</div>
             <h4 class="card-title">Ice Blend &amp; Latte</h4>
@@ -267,19 +213,16 @@
               <img src="/glr/mocktails.png" alt="Mocktail"
                 onerror="this.style.background='linear-gradient(135deg,#be123c,#fb7185)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Mocktails &amp; Mojitos</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Mocktails &amp; Mojitos</h3></div>
             </div>
             <div class="menu-badge-large fruity">Fruity</div>
             <h4 class="card-title">Mocktails &amp; Mojitos</h4>
           </div>
-
         </div>
         <div class="gradient-left"></div>
         <div class="gradient-right"></div>
       </div>
-    </div><!-- /drinks carousel -->
+    </div>
 
     <div class="section-divider"></div>
 
@@ -289,8 +232,8 @@
         <div class="carousel-icon foods">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m3 11 18-5v12L3 14v-3z" />
-            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+            <path d="m3 11 18-5v12L3 14v-3z"/>
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
           </svg>
         </div>
         <div>
@@ -301,15 +244,12 @@
 
       <div class="carousel-container" id="foods-carousel">
         <div class="carousel-track">
-
           <div class="menu-card">
             <div class="menu-image-wrapper">
               <img src="/glr/makanan.png" alt="Food & Snacks"
                 onerror="this.style.background='linear-gradient(135deg,#9a3412,#fb923c)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Food &amp; Snacks</h3></div>
             </div>
             <div class="menu-badge-large tasty">Tasty</div>
             <h4 class="card-title">Food &amp; Snacks</h4>
@@ -320,9 +260,7 @@
               <img src="/glr/makanan2.png" alt="Food"
                 onerror="this.style.background='linear-gradient(135deg,#713f12,#fbbf24)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Food &amp; Snacks</h3></div>
             </div>
             <div class="menu-badge-large tasty">Tasty</div>
             <h4 class="card-title">Food &amp; Snacks</h4>
@@ -333,30 +271,20 @@
               <img src="/glr/burger.png" alt="Burger"
                 onerror="this.style.background='linear-gradient(135deg,#854d0e,#fde047)';this.style.borderRadius='12px'"
                 draggable="false">
-              <div class="menu-overlay">
-                <h3 class="menu-title-overlay">Burger</h3>
-              </div>
+              <div class="menu-overlay"><h3 class="menu-title-overlay">Burger</h3></div>
             </div>
             <div class="menu-badge-large savory">Savory</div>
             <h4 class="card-title">Burger</h4>
           </div>
-
         </div>
         <div class="gradient-left"></div>
         <div class="gradient-right"></div>
       </div>
-    </div><!-- /foods carousel -->
+    </div>
 
     <p class="swipe-hint">Swipe left or right to explore</p>
 
   </section>
-  <!-- /menu -->
-
-
-
- 
-
-
 
   <!-- ==================== GALLERY ==================== -->
   <section id="gallery" class="gallery-section">
@@ -394,63 +322,9 @@
     </div>
   </section>
 
-  <!-- ==================== LOCATION ==================== -->
-  <section id="location" class="location-section">
-    <div class="location-container">
-      <div class="location-content">
-        <div class="section-header centered">
-          <span class="section-label">Visit Us</span>
-          <h2 class="section-title">Find Your Space</h2>
-        </div>
-
-        <div class="location-info-card">
-          <div class="info-block">
-            <div class="info-icon"><i class="fas fa-clock"></i></div>
-            <div class="info-text">
-              <h3>Opening Hours</h3>
-              <p>Monday – Sunday</p>
-              <p class="highlight">10:00 AM – 12:00 AM</p>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="info-text">
-              <h3>Address</h3>
-              <p>Jl. Raya Panongan</p>
-              <p>Kec. Panongan, Kab. Tangerang, Banten</p>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="info-icon"><i class="fas fa-phone"></i></div>
-            <div class="info-text">
-              <h3>Contact</h3>
-              <p>Phone / WhatsApp:</p>
-              <p class="highlight">+62 8xx xxxx xxxx</p>
-              <p>Email: hello@1997coffee.space</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="map-wrapper">
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-<!-- ==================== ABOUT ==================== -->
-  <section class="about-section">
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="about-section">
     <div class="section-header centered">
-      <span class="section-label"></span>
       <h2 class="section-title">Our Story</h2>
     </div>
 
@@ -483,10 +357,54 @@
     </div>
   </section>
 
+  <!-- ==================== LOCATION ==================== -->
+  <section id="location" class="location-section">
+    <div class="location-container">
+      <div class="location-content">
+        <div class="section-header centered">
+          <span class="section-label">Visit Us</span>
+          <h2 class="section-title">Find Your Space</h2>
+        </div>
 
+        <div class="location-info-card">
+          <div class="info-block">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-text">
+              <h3>Opening Hours</h3>
+              <p>Monday – Sunday</p>
+              <p class="highlight">10:00 AM – 12:00 AM</p>
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <h3>Address</h3>
+              <p>Jl. Raya Panongan</p>
+              <p>Kec. Panongan, Kab. Tangerang, Banten</p>
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div class="info-text">
+              <h3>Contact</h3>
+              <p>Phone / WhatsApp:</p>
+              <p class="highlight">+62 851-1768-9797</p>
+              <p>Email: hello@1997coffee.space</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-
-
+      <div class="map-wrapper">
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==================== CONTACT ==================== -->
   <section id="contact" class="contact-section">
@@ -502,12 +420,10 @@
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" required />
         </div>
-
         <div class="form-group">
           <label for="phone">Phone Number</label>
           <input type="text" id="phone" name="phone" required />
         </div>
-
         <div class="form-row">
           <div class="form-group">
             <label for="date">Date</label>
@@ -518,12 +434,10 @@
             <input type="time" id="time" name="time" required />
           </div>
         </div>
-
         <div class="form-group">
           <label for="message">Special Requests</label>
           <textarea id="message" name="message" rows="4"></textarea>
         </div>
-
         <button type="submit" class="btn-primary large">
           <i class="fab fa-whatsapp"></i>
           <span>Send via WhatsApp</span>
@@ -542,10 +456,10 @@
         </h3>
         <p class="footer-tagline">its not living if its not with you</p>
         <div class="social-icons">
-          <a href="https://www.instagram.com/the1997_______" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/the1997_______" target="_blank" rel="noopener" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://www.tiktok.com/@the1997_______" target="_blank" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@the1997_______" target="_blank" rel="noopener" aria-label="TikTok">
             <i class="fab fa-tiktok"></i>
           </a>
         </div>
@@ -572,9 +486,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="/js/main.js"></script>
 
 </body>
-
 </html>

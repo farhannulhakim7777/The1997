@@ -1,16 +1,6 @@
 // ===============================================
 // THE 1997 COFFEE & SPACE — MAIN JAVASCRIPT
-// Sections:
-//  1. Page Load
-//  2. Smooth Scroll
-//  3. Navbar (mobile menu + hamburger)
-//  4. Parallax
-//  5. Gallery Lightbox
-//  6. WhatsApp Form
-//  7. Form Animations (focus / ripple)
-//  8. Carousel (swipeable, momentum, spring)
 // ===============================================
-
 
 // ─── 1. PAGE LOAD ────────────────────────────────────────────────────────────
 
@@ -20,63 +10,146 @@ window.addEventListener('load', function () {
 });
 
 
-// ─── 2. SMOOTH SCROLL ────────────────────────────────────────────────────────
+// ─── DOMContentLoaded — semua logic di sini ──────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function () {
+
+
+  // ─── 2. SMOOTH SCROLL ────────────────────────────────────────────────────
 
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       var target = document.querySelector(this.getAttribute('href'));
       if (!target) return;
-      var navHeight = (document.querySelector('.navbar') || {}).offsetHeight || 0;
+      var navbar    = document.getElementById('navbar');
+      var navHeight = navbar ? navbar.offsetHeight : 0;
       window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+
+      // Tutup menu mobile setelah klik link
+      closeMenu();
     });
   });
 
 
-  // ─── 3. NAVBAR ─────────────────────────────────────────────────────────────
+  // ─── 3. NAVBAR — HAMBURGER ───────────────────────────────────────────────
 
-  var navbar    = document.querySelector('.navbar');
   var hamburger = document.getElementById('hamburger');
   var navLinks  = document.getElementById('navLinks');
 
-  function closeMenu() {
-    if (!navLinks || !hamburger) return;
-    navLinks.classList.remove('active');
-    hamburger.classList.remove('active');
-    var spans = hamburger.querySelectorAll('span');
-    spans[0].style.transform = 'none';
-    spans[1].style.opacity   = '1';
-    spans[2].style.transform = 'none';
-  }
-
   function openMenu() {
-    if (!navLinks || !hamburger) return;
+    if (!hamburger || !navLinks) return;
     navLinks.classList.add('active');
-    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
     var spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = 'rotate(45deg) translateY(8px)';
     spans[1].style.opacity   = '0';
+    spans[1].style.transform = 'scaleX(0)';
     spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
   }
 
-  if (navbar && hamburger && navLinks) {
-    hamburger.addEventListener('click', function () {
+  function closeMenu() {
+    if (!hamburger || !navLinks) return;
+    navLinks.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    var spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = 'none';
+    spans[1].style.opacity   = '1';
+    spans[1].style.transform = 'none';
+    spans[2].style.transform = 'none';
+  }
+
+  if (hamburger && navLinks) {
+    // Toggle saat klik hamburger
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation(); // cegah event naik ke document
       navLinks.classList.contains('active') ? closeMenu() : openMenu();
     });
 
+    // Tutup saat klik di luar navbar
     document.addEventListener('click', function (e) {
-      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) closeMenu();
+      var navbar = document.getElementById('navbar');
+      if (navbar && !navbar.contains(e.target)) {
+        closeMenu();
+      }
     });
 
-    document.querySelectorAll('.nav-link').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
+    // Tutup saat tekan Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 
 
-  // ─── 5. GALLERY LIGHTBOX ───────────────────────────────────────────────────
+  // ─── 4. GHOST REVEAL — Coffee & Space ───────────────────────────────────
+  // Semua logic di sini karena perlu DOM sudah siap
+
+  var ghostEl = document.querySelector('.title-line.accent');
+
+  if (ghostEl) {
+    // Set initial state via JS — tidak perlu di CSS
+    ghostEl.style.opacity = '0';
+    ghostEl.style.filter  = 'blur(20px)';
+    ghostEl.style.willChange = 'opacity, filter';
+
+    var FADE_IN_MS  = 1400;
+    var HOLD_MS     = 1800;
+    var FADE_OUT_MS = 1000;
+    var PAUSE_MS    = 600;
+    var BLUR_MAX    = 20;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    function easeInCubic(t)  { return t * t * t; }
+
+    function ghostAnimate(duration, easing, onTick, onDone) {
+      var startTime = null;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var raw = Math.min((ts - startTime) / duration, 1);
+        onTick(easing(raw));
+        if (raw < 1) {
+          requestAnimationFrame(step);
+        } else {
+          if (onDone) onDone();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function runGhostCycle() {
+      // FASE 1 — muncul dari kabur
+      ghostAnimate(FADE_IN_MS, easeOutCubic, function (p) {
+        ghostEl.style.opacity = p;
+        ghostEl.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(1 - p, 2)).toFixed(2) + 'px)';
+      }, function () {
+        ghostEl.style.opacity = '1';
+        ghostEl.style.filter  = 'blur(0px)';
+
+        // FASE 2 — diam solid
+        setTimeout(function () {
+
+          // FASE 3 — menghilang ke kabur
+          ghostAnimate(FADE_OUT_MS, easeInCubic, function (p) {
+            ghostEl.style.opacity = 1 - p;
+            ghostEl.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(p, 1.8)).toFixed(2) + 'px)';
+          }, function () {
+            ghostEl.style.opacity = '0';
+            ghostEl.style.filter  = 'blur(' + BLUR_MAX + 'px)';
+
+            // FASE 4 — jeda lalu ulang
+            setTimeout(runGhostCycle, PAUSE_MS);
+          });
+
+        }, HOLD_MS);
+      });
+    }
+
+    // Mulai setelah 400ms supaya halaman sudah render
+    setTimeout(runGhostCycle, 400);
+  }
+
+
+  // ─── 5. GALLERY LIGHTBOX ─────────────────────────────────────────────────
 
   document.querySelectorAll('.gallery-item').forEach(function (item) {
     item.addEventListener('click', function () {
@@ -89,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
       lightbox.innerHTML =
         '<div class="lightbox-content">' +
           '<img src="' + src + '" alt="Gallery Image">' +
-          '<button class="lightbox-close">&times;</button>' +
+          '<button class="lightbox-close" aria-label="Tutup">&times;</button>' +
         '</div>';
 
       document.body.appendChild(lightbox);
@@ -104,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lightbox.style.opacity = '0';
         lightbox.querySelector('.lightbox-content').style.transform = 'scale(0.9)';
         setTimeout(function () {
-          lightbox.remove();
+          if (lightbox.parentNode) lightbox.remove();
           document.body.style.overflow = '';
         }, 300);
       }
@@ -112,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
       lightbox.addEventListener('click', function (e) {
         if (e.target === lightbox) closeLightbox();
       });
+
       lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
 
       document.addEventListener('keydown', function escHandler(e) {
@@ -124,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // ─── 6. WHATSAPP FORM ──────────────────────────────────────────────────────
+  // ─── 6. WHATSAPP FORM ────────────────────────────────────────────────────
 
   var form = document.getElementById('whatsappForm');
 
@@ -148,17 +222,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       var whatsappText =
-        '🌸 *Reservation Request* 🌸\n\n' +
+        '\uD83C\uDF38 *Reservation Request* \uD83C\uDF38\n\n' +
         '*Name:* ' + name + '\n' +
         '*Phone:* ' + phone + '\n' +
         '*Date:* ' + formattedDate + '\n' +
         '*Time:* ' + time + '\n' +
         '*Special Requests:*\n' + (message || '-') + '\n\n' +
-        'Thank you for choosing The 1997 Coffee & Space! ☕✨';
+        'Thank you for choosing The 1997 Coffee & Space! \u2615\u2728';
 
-      var whatsappNumber = '6285117689797';
-      var waUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappText);
-
+      var waUrl = 'https://wa.me/6285117689797?text=' + encodeURIComponent(whatsappText);
       window.open(waUrl, '_blank');
       showSuccessMessage();
       form.reset();
@@ -166,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  // ─── 7. FORM ANIMATIONS ────────────────────────────────────────────────────
+  // ─── 7. FORM INPUT ANIMATIONS ────────────────────────────────────────────
 
   document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(function (input) {
     input.addEventListener('focus', function () {
@@ -181,25 +253,23 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // ─── 8. CAROUSEL ───────────────────────────────────────────────────────────
+  // ─── 8. CAROUSEL ─────────────────────────────────────────────────────────
 
   document.querySelectorAll('.carousel-container').forEach(initCarousel);
+
 
 }); // end DOMContentLoaded
 
 
-// ─── 4. PARALLAX ─────────────────────────────────────────────────────────────
+// ─── PARALLAX (scroll event — di luar DOMContentLoaded) ──────────────────────
 
 window.addEventListener('scroll', function () {
   var scrolled = window.pageYOffset;
 
-  var hero = document.querySelector('.hero');
-  if (hero) hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-
   document.querySelectorAll('.float-circle').forEach(function (circle, i) {
-    circle.style.transform = 'translateY(' + (scrolled * (0.1 + i * 0.05)) + 'px)';
+    circle.style.transform = 'translateY(' + (scrolled * (0.08 + i * 0.04)) + 'px)';
   });
-});
+}, { passive: true });
 
 
 // ===============================================
@@ -220,7 +290,7 @@ function showSuccessMessage() {
   setTimeout(function () {
     msg.style.opacity   = '0';
     msg.style.transform = 'translateY(-20px)';
-    setTimeout(function () { msg.remove(); }, 300);
+    setTimeout(function () { if (msg.parentNode) msg.remove(); }, 300);
   }, 3000);
 }
 
@@ -229,50 +299,51 @@ function createRipple(event, element) {
   var rect   = element.getBoundingClientRect();
   var size   = Math.max(rect.width, rect.height);
 
-  ripple.style.width  = ripple.style.height = size + 'px';
-  ripple.style.left   = (event.clientX - rect.left - size / 2) + 'px';
-  ripple.style.top    = (event.clientY - rect.top  - size / 2) + 'px';
-  ripple.classList.add('ripple');
+  ripple.style.cssText =
+    'position:absolute;border-radius:50%;' +
+    'background:rgba(255,182,217,0.4);' +
+    'transform:scale(0);' +
+    'animation:ripple-animation 0.6s ease-out;' +
+    'pointer-events:none;' +
+    'width:' + size + 'px;height:' + size + 'px;' +
+    'left:' + (event.clientX - rect.left - size / 2) + 'px;' +
+    'top:' + (event.clientY - rect.top  - size / 2) + 'px;';
 
   element.style.position = 'relative';
   element.style.overflow = 'hidden';
   element.appendChild(ripple);
-
-  setTimeout(function () { ripple.remove(); }, 600);
+  setTimeout(function () { if (ripple.parentNode) ripple.remove(); }, 600);
 }
 
 
 // ===============================================
 // CAROUSEL ENGINE
-// Fix: deteksi arah swipe, preventDefault hanya
-// saat horizontal, tidak ganggu scroll vertikal
+// — deteksi arah swipe sebelum bergerak
+// — preventDefault hanya saat swipe horizontal
+// — tidak ganggu scroll vertikal halaman
 // ===============================================
 
 function initCarousel(container) {
   var track = container.querySelector('.carousel-track');
   if (!track) return;
 
-  var isDragging     = false;
-  var isDecided      = false;   // sudah tahu arah swipe (H atau V)?
-  var isHorizontal   = false;   // arah swipe ditentukan horizontal?
-  var startX         = 0;
-  var startY         = 0;
-  var currentX       = 0;
-  var startTranslate = 0;
-  var velocity       = 0;
-  var lastX          = 0;
-  var lastTime       = 0;
-  var rafID          = null;
-
-  // ── Helpers ──
+  var isDragging   = false;
+  var isDecided    = false;
+  var isHorizontal = false;
+  var startX       = 0;
+  var startY       = 0;
+  var currentX     = 0;
+  var startTX      = 0;
+  var velocity     = 0;
+  var lastX        = 0;
+  var lastTime     = 0;
+  var rafID        = null;
 
   function maxScroll() {
     return Math.max(0, track.scrollWidth - container.clientWidth);
   }
 
-  function clamp(val, lo, hi) {
-    return Math.min(Math.max(val, lo), hi);
-  }
+  function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
 
   function applyTranslate(x) {
     currentX = x;
@@ -286,8 +357,6 @@ function initCarousel(container) {
     container.classList.toggle('can-scroll-right', currentX > -(max - 4) && max > 0);
   }
 
-  // ── Momentum ──
-
   function momentumTick() {
     if (Math.abs(velocity) < 0.2) {
       var max = maxScroll();
@@ -296,50 +365,38 @@ function initCarousel(container) {
       rafID = null;
       return;
     }
-
     var max  = maxScroll();
     var newX = currentX + velocity;
     velocity *= 0.90;
-
     if (newX > 0)    { newX = 0;    velocity = 0; }
     if (newX < -max) { newX = -max; velocity = 0; }
-
     applyTranslate(newX);
     rafID = requestAnimationFrame(momentumTick);
   }
 
-  // ── Spring back ──
-
   function springTo(target) {
-    var STIFFNESS = 0.18;
     function tick() {
       var diff = target - currentX;
       if (Math.abs(diff) < 0.5) { applyTranslate(target); rafID = null; return; }
-      applyTranslate(currentX + diff * STIFFNESS);
+      applyTranslate(currentX + diff * 0.18);
       rafID = requestAnimationFrame(tick);
     }
     rafID = requestAnimationFrame(tick);
   }
 
-  // ── Drag start ──
-
   function onStart(x, y) {
     if (rafID) { cancelAnimationFrame(rafID); rafID = null; }
-
-    isDragging     = true;
-    isDecided      = false;
-    isHorizontal   = false;
-    startX         = x;
-    startY         = y;
-    startTranslate = currentX;
-    lastX          = x;
-    lastTime       = performance.now();
-    velocity       = 0;
-
+    isDragging   = true;
+    isDecided    = false;
+    isHorizontal = false;
+    startX       = x;
+    startY       = y;
+    startTX      = currentX;
+    lastX        = x;
+    lastTime     = performance.now();
+    velocity     = 0;
     track.classList.add('is-dragging');
   }
-
-  // ── Drag move — deteksi arah dulu sebelum gerakkan ──
 
   function onMove(x, y, e) {
     if (!isDragging) return;
@@ -347,41 +404,34 @@ function initCarousel(container) {
     var dx = x - startX;
     var dy = y - startY;
 
-    // Tunggu minimal 5px gerak sebelum putuskan arah
     if (!isDecided) {
       if (Math.abs(dx) < 5 && Math.abs(dy) < 5) return;
       isHorizontal = Math.abs(dx) > Math.abs(dy);
       isDecided    = true;
     }
 
-    // Kalau swipe vertikal — lepaskan ke scroll halaman
+    // Swipe vertikal → lepas ke halaman
     if (!isHorizontal) {
       isDragging = false;
       track.classList.remove('is-dragging');
       return;
     }
 
-    // Swipe horizontal — cegah scroll halaman
+    // Swipe horizontal → cegah scroll halaman
     if (e && e.cancelable) e.preventDefault();
 
     var max  = maxScroll();
-    var newX = startTranslate + dx;
-
-    // Rubber-band di ujung
+    var newX = startTX + dx;
     if (newX > 0)    newX = newX * 0.22;
     if (newX < -max) newX = -max + (newX + max) * 0.22;
-
     applyTranslate(newX);
 
-    // Velocity sampling
     var now = performance.now();
     var dt  = now - lastTime;
     if (dt > 0) velocity = ((x - lastX) / dt) * 14;
     lastX    = x;
     lastTime = now;
   }
-
-  // ── Drag end ──
 
   function onEnd() {
     if (!isDragging) return;
@@ -397,107 +447,38 @@ function initCarousel(container) {
     }
   }
 
-  // ── Mouse events — desktop only ──
-  // Bound to track saja bukan document, cukup untuk desktop
-
+  // Mouse — desktop
   track.addEventListener('mousedown', function (e) {
     e.preventDefault();
     onStart(e.clientX, e.clientY);
   });
 
-  // mousemove & mouseup ke window supaya drag tetap jalan kalau keluar track
   window.addEventListener('mousemove', function (e) {
-    if (!isDragging) return;
-    onMove(e.clientX, e.clientY, e);
+    if (isDragging) onMove(e.clientX, e.clientY, e);
   });
 
   window.addEventListener('mouseup', function () {
     if (isDragging) onEnd();
   });
 
-  // ── Touch events — mobile ──
-  // passive: false HANYA saat sudah tahu horizontal,
-  // supaya bisa preventDefault dan cegah scroll halaman
-
+  // Touch — mobile
   track.addEventListener('touchstart', function (e) {
     onStart(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });  // touchstart boleh passive
+  }, { passive: true });
 
   track.addEventListener('touchmove', function (e) {
     if (!isDragging) return;
     onMove(e.touches[0].clientX, e.touches[0].clientY, e);
-  }, { passive: false });  // HARUS non-passive agar bisa preventDefault
+  }, { passive: false }); // non-passive agar bisa preventDefault
 
   track.addEventListener('touchend',    onEnd, { passive: true });
   track.addEventListener('touchcancel', onEnd, { passive: true });
-
-  // ── Resize ──
 
   window.addEventListener('resize', function () {
     var max = maxScroll();
     if (currentX < -max) applyTranslate(-max);
     updateGradients();
-  });
+  }, { passive: true });
 
-  // ── Init ──
   updateGradients();
 }
-
-
-// ─── GHOST REVEAL — Coffee & Space ──────────────────────────────────────────
-
-(function () {
-  var el = document.querySelector('.title-line.accent');
-  if (!el) return;
-
-  var FADE_IN_MS  = 1400;
-  var HOLD_MS     = 1800;
-  var FADE_OUT_MS = 1000;
-  var PAUSE_MS    = 600;
-  var BLUR_MAX    = 20;
-
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-  function easeInCubic(t)  { return t * t * t; }
-
-  function animate(duration, easing, onTick, onDone) {
-    var startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var raw = Math.min((ts - startTime) / duration, 1);
-      onTick(easing(raw));
-      if (raw < 1) requestAnimationFrame(step);
-      else if (onDone) onDone();
-    }
-    requestAnimationFrame(step);
-  }
-
-  function runCycle() {
-    // FASE 1 — muncul
-    animate(FADE_IN_MS, easeOutCubic, function (p) {
-      el.style.opacity = p;
-      el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(1 - p, 2)).toFixed(2) + 'px)';
-    }, function () {
-      el.style.opacity = 1;
-      el.style.filter  = 'blur(0px)';
-
-      // FASE 2 — diam
-      setTimeout(function () {
-
-        // FASE 3 — menghilang
-        animate(FADE_OUT_MS, easeInCubic, function (p) {
-          el.style.opacity = 1 - p;
-          el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(p, 1.8)).toFixed(2) + 'px)';
-        }, function () {
-          el.style.opacity = 0;
-          el.style.filter  = 'blur(' + BLUR_MAX + 'px)';
-
-          // FASE 4 — jeda lalu ulang
-          setTimeout(runCycle, PAUSE_MS);
-        });
-
-      }, HOLD_MS);
-    });
-  }
-
-  setTimeout(runCycle, 400);
-})();
