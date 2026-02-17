@@ -14,7 +14,7 @@
 
 // ─── 1. PAGE LOAD ────────────────────────────────────────────────────────────
 
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
   document.body.style.opacity = '1';
   console.log('✨ The 1997 Coffee & Space — Loaded ☕');
 });
@@ -22,14 +22,14 @@ window.addEventListener('load', () => {
 
 // ─── 2. SMOOTH SCROLL ────────────────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      var target = document.querySelector(this.getAttribute('href'));
       if (!target) return;
-      const navHeight = document.querySelector('.navbar')?.offsetHeight ?? 0;
+      var navHeight = (document.querySelector('.navbar') || {}).offsetHeight || 0;
       window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
     });
   });
@@ -37,42 +37,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── 3. NAVBAR ─────────────────────────────────────────────────────────────
 
-  const navbar    = document.querySelector('.navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  var navbar    = document.querySelector('.navbar');
+  var hamburger = document.getElementById('hamburger');
+  var navLinks  = document.getElementById('navLinks');
 
   function closeMenu() {
+    if (!navLinks || !hamburger) return;
     navLinks.classList.remove('active');
     hamburger.classList.remove('active');
-    const spans = hamburger.querySelectorAll('span');
+    var spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = 'none';
     spans[1].style.opacity   = '1';
     spans[2].style.transform = 'none';
   }
 
   function openMenu() {
+    if (!navLinks || !hamburger) return;
     navLinks.classList.add('active');
     hamburger.classList.add('active');
-    const spans = hamburger.querySelectorAll('span');
+    var spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = 'rotate(45deg) translateY(8px)';
     spans[1].style.opacity   = '0';
     spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
   }
 
   if (navbar && hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', function () {
       navLinks.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', e => {
-      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        closeMenu();
-      }
+    document.addEventListener('click', function (e) {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) closeMenu();
     });
 
-    // Close when a nav link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
   }
@@ -80,25 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── 5. GALLERY LIGHTBOX ───────────────────────────────────────────────────
 
-  document.querySelectorAll('.gallery-item').forEach(item => {
+  document.querySelectorAll('.gallery-item').forEach(function (item) {
     item.addEventListener('click', function () {
-      const src = this.querySelector('img')?.src;
+      var img = this.querySelector('img');
+      var src = img ? img.src : null;
       if (!src) return;
 
-      const lightbox = document.createElement('div');
+      var lightbox = document.createElement('div');
       lightbox.className = 'lightbox';
-      lightbox.innerHTML = `
-        <div class="lightbox-content">
-          <img src="${src}" alt="Gallery Image">
-          <button class="lightbox-close">&times;</button>
-        </div>
-      `;
+      lightbox.innerHTML =
+        '<div class="lightbox-content">' +
+          '<img src="' + src + '" alt="Gallery Image">' +
+          '<button class="lightbox-close">&times;</button>' +
+        '</div>';
 
       document.body.appendChild(lightbox);
       document.body.style.overflow = 'hidden';
 
-      // Animate in
-      requestAnimationFrame(() => {
+      requestAnimationFrame(function () {
         lightbox.style.opacity = '1';
         lightbox.querySelector('.lightbox-content').style.transform = 'scale(1)';
       });
@@ -106,13 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
       function closeLightbox() {
         lightbox.style.opacity = '0';
         lightbox.querySelector('.lightbox-content').style.transform = 'scale(0.9)';
-        setTimeout(() => {
+        setTimeout(function () {
           lightbox.remove();
           document.body.style.overflow = '';
         }, 300);
       }
 
-      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
       lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
 
       document.addEventListener('keydown', function escHandler(e) {
@@ -127,41 +126,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── 6. WHATSAPP FORM ──────────────────────────────────────────────────────
 
-  const form = document.getElementById('whatsappForm');
+  var form = document.getElementById('whatsappForm');
 
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const name    = document.getElementById('name').value.trim();
-      const phone   = document.getElementById('phone').value.trim();
-      const date    = document.getElementById('date').value;
-      const time    = document.getElementById('time').value;
-      const message = document.getElementById('message').value.trim();
+      var name    = document.getElementById('name').value.trim();
+      var phone   = document.getElementById('phone').value.trim();
+      var date    = document.getElementById('date').value;
+      var time    = document.getElementById('time').value;
+      var message = document.getElementById('message').value.trim();
 
       if (!name || !phone || !date || !time) {
         alert('Lengkapi semua data terlebih dahulu');
         return;
       }
 
-      const formattedDate = new Date(date).toLocaleDateString('id-ID', {
+      var formattedDate = new Date(date).toLocaleDateString('id-ID', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
       });
 
-      const whatsappText =
-`🌸 *Reservation Request* 🌸
+      var whatsappText =
+        '🌸 *Reservation Request* 🌸\n\n' +
+        '*Name:* ' + name + '\n' +
+        '*Phone:* ' + phone + '\n' +
+        '*Date:* ' + formattedDate + '\n' +
+        '*Time:* ' + time + '\n' +
+        '*Special Requests:*\n' + (message || '-') + '\n\n' +
+        'Thank you for choosing The 1997 Coffee & Space! ☕✨';
 
-*Name:* ${name}
-*Phone:* ${phone}
-*Date:* ${formattedDate}
-*Time:* ${time}
-*Special Requests:*
-${message || '-'}
-
-Thank you for choosing The 1997 Coffee & Space! ☕✨`;
-
-      const whatsappNumber = '6285117689797';
-      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+      var whatsappNumber = '6285117689797';
+      var waUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappText);
 
       window.open(waUrl, '_blank');
       showSuccessMessage();
@@ -172,15 +168,13 @@ Thank you for choosing The 1997 Coffee & Space! ☕✨`;
 
   // ─── 7. FORM ANIMATIONS ────────────────────────────────────────────────────
 
-  document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(input => {
+  document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(function (input) {
     input.addEventListener('focus', function () {
       this.parentElement.classList.add('focused');
     });
-
     input.addEventListener('blur', function () {
       if (!this.value) this.parentElement.classList.remove('focused');
     });
-
     input.addEventListener('click', function (e) {
       createRipple(e, this);
     });
@@ -194,16 +188,16 @@ Thank you for choosing The 1997 Coffee & Space! ☕✨`;
 }); // end DOMContentLoaded
 
 
-// ─── 4. PARALLAX (outside DOMContentLoaded — fires on scroll) ────────────────
+// ─── 4. PARALLAX ─────────────────────────────────────────────────────────────
 
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
+window.addEventListener('scroll', function () {
+  var scrolled = window.pageYOffset;
 
-  const hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero');
   if (hero) hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
 
-  document.querySelectorAll('.float-circle').forEach((circle, i) => {
-    circle.style.transform = `translateY(${scrolled * (0.1 + i * 0.05)}px)`;
+  document.querySelectorAll('.float-circle').forEach(function (circle, i) {
+    circle.style.transform = 'translateY(' + (scrolled * (0.1 + i * 0.05)) + 'px)';
   });
 });
 
@@ -212,30 +206,28 @@ window.addEventListener('scroll', () => {
 // HELPER FUNCTIONS
 // ===============================================
 
-/** Show a brief success toast */
 function showSuccessMessage() {
-  const msg = document.createElement('div');
+  var msg = document.createElement('div');
   msg.className = 'success-message';
-  msg.innerHTML = `<i class="fas fa-check-circle"></i><p>Redirecting to WhatsApp...</p>`;
+  msg.innerHTML = '<i class="fas fa-check-circle"></i><p>Redirecting to WhatsApp...</p>';
   document.body.appendChild(msg);
 
-  requestAnimationFrame(() => {
+  requestAnimationFrame(function () {
     msg.style.opacity   = '1';
     msg.style.transform = 'translateY(0)';
   });
 
-  setTimeout(() => {
+  setTimeout(function () {
     msg.style.opacity   = '0';
     msg.style.transform = 'translateY(-20px)';
-    setTimeout(() => msg.remove(), 300);
+    setTimeout(function () { msg.remove(); }, 300);
   }, 3000);
 }
 
-/** Ink-ripple effect on form inputs */
 function createRipple(event, element) {
-  const ripple = document.createElement('span');
-  const rect   = element.getBoundingClientRect();
-  const size   = Math.max(rect.width, rect.height);
+  var ripple = document.createElement('span');
+  var rect   = element.getBoundingClientRect();
+  var size   = Math.max(rect.width, rect.height);
 
   ripple.style.width  = ripple.style.height = size + 'px';
   ripple.style.left   = (event.clientX - rect.left - size / 2) + 'px';
@@ -246,35 +238,40 @@ function createRipple(event, element) {
   element.style.overflow = 'hidden';
   element.appendChild(ripple);
 
-  setTimeout(() => ripple.remove(), 600);
+  setTimeout(function () { ripple.remove(); }, 600);
 }
 
 
 // ===============================================
 // CAROUSEL ENGINE
+// Fix: deteksi arah swipe, preventDefault hanya
+// saat horizontal, tidak ganggu scroll vertikal
 // ===============================================
 
 function initCarousel(container) {
-  const track = container.querySelector('.carousel-track');
+  var track = container.querySelector('.carousel-track');
   if (!track) return;
 
-  let isDragging     = false;
-  let startX         = 0;
-  let currentX       = 0;   // current translateX (px)
-  let startTranslate = 0;   // translateX at drag start
-  let velocity       = 0;
-  let lastX          = 0;
-  let lastTime       = 0;
-  let rafID          = null;
+  var isDragging     = false;
+  var isDecided      = false;   // sudah tahu arah swipe (H atau V)?
+  var isHorizontal   = false;   // arah swipe ditentukan horizontal?
+  var startX         = 0;
+  var startY         = 0;
+  var currentX       = 0;
+  var startTranslate = 0;
+  var velocity       = 0;
+  var lastX          = 0;
+  var lastTime       = 0;
+  var rafID          = null;
 
-  /* ── Helpers ── */
+  // ── Helpers ──
 
   function maxScroll() {
     return Math.max(0, track.scrollWidth - container.clientWidth);
   }
 
-  function clamp(val, min, max) {
-    return Math.min(Math.max(val, min), max);
+  function clamp(val, lo, hi) {
+    return Math.min(Math.max(val, lo), hi);
   }
 
   function applyTranslate(x) {
@@ -284,28 +281,26 @@ function initCarousel(container) {
   }
 
   function updateGradients() {
-    const max = maxScroll();
+    var max = maxScroll();
     container.classList.toggle('can-scroll-left',  currentX < -4);
     container.classList.toggle('can-scroll-right', currentX > -(max - 4) && max > 0);
   }
 
-  /* ── Momentum loop ── */
+  // ── Momentum ──
 
   function momentumTick() {
     if (Math.abs(velocity) < 0.2) {
-      // Snap to edge if slightly out of bounds
-      const max = maxScroll();
+      var max = maxScroll();
       if (currentX > 0)    applyTranslate(0);
       if (currentX < -max) applyTranslate(-max);
       rafID = null;
       return;
     }
 
-    const max = maxScroll();
-    let newX  = currentX + velocity;
-    velocity *= 0.90; // friction (0.88 = heavy, 0.94 = floaty)
+    var max  = maxScroll();
+    var newX = currentX + velocity;
+    velocity *= 0.90;
 
-    // Hard stops at edges
     if (newX > 0)    { newX = 0;    velocity = 0; }
     if (newX < -max) { newX = -max; velocity = 0; }
 
@@ -313,68 +308,88 @@ function initCarousel(container) {
     rafID = requestAnimationFrame(momentumTick);
   }
 
-  /* ── Spring-back for rubber-band release ── */
+  // ── Spring back ──
 
   function springTo(target) {
-    const STIFFNESS = 0.18;
-
+    var STIFFNESS = 0.18;
     function tick() {
-      const diff = target - currentX;
+      var diff = target - currentX;
       if (Math.abs(diff) < 0.5) { applyTranslate(target); rafID = null; return; }
       applyTranslate(currentX + diff * STIFFNESS);
       rafID = requestAnimationFrame(tick);
     }
-
     rafID = requestAnimationFrame(tick);
   }
 
-  /* ── Drag start ── */
+  // ── Drag start ──
 
-  function onStart(clientX) {
+  function onStart(x, y) {
     if (rafID) { cancelAnimationFrame(rafID); rafID = null; }
 
     isDragging     = true;
-    startX         = clientX;
+    isDecided      = false;
+    isHorizontal   = false;
+    startX         = x;
+    startY         = y;
     startTranslate = currentX;
-    lastX          = clientX;
+    lastX          = x;
     lastTime       = performance.now();
     velocity       = 0;
 
     track.classList.add('is-dragging');
   }
 
-  /* ── Drag move ── */
+  // ── Drag move — deteksi arah dulu sebelum gerakkan ──
 
-  function onMove(clientX) {
+  function onMove(x, y, e) {
     if (!isDragging) return;
 
-    const delta = clientX - startX;
-    const max   = maxScroll();
-    let newX    = startTranslate + delta;
+    var dx = x - startX;
+    var dy = y - startY;
 
-    // Rubber-band resistance at edges
+    // Tunggu minimal 5px gerak sebelum putuskan arah
+    if (!isDecided) {
+      if (Math.abs(dx) < 5 && Math.abs(dy) < 5) return;
+      isHorizontal = Math.abs(dx) > Math.abs(dy);
+      isDecided    = true;
+    }
+
+    // Kalau swipe vertikal — lepaskan ke scroll halaman
+    if (!isHorizontal) {
+      isDragging = false;
+      track.classList.remove('is-dragging');
+      return;
+    }
+
+    // Swipe horizontal — cegah scroll halaman
+    if (e && e.cancelable) e.preventDefault();
+
+    var max  = maxScroll();
+    var newX = startTranslate + dx;
+
+    // Rubber-band di ujung
     if (newX > 0)    newX = newX * 0.22;
     if (newX < -max) newX = -max + (newX + max) * 0.22;
 
     applyTranslate(newX);
 
     // Velocity sampling
-    const now = performance.now();
-    const dt  = now - lastTime;
-    if (dt > 0) velocity = ((clientX - lastX) / dt) * 14;
-    lastX    = clientX;
+    var now = performance.now();
+    var dt  = now - lastTime;
+    if (dt > 0) velocity = ((x - lastX) / dt) * 14;
+    lastX    = x;
     lastTime = now;
   }
 
-  /* ── Drag end ── */
+  // ── Drag end ──
 
   function onEnd() {
     if (!isDragging) return;
     isDragging = false;
+    isDecided  = false;
     track.classList.remove('is-dragging');
 
-    const max = maxScroll();
-
+    var max = maxScroll();
     if (currentX > 0 || currentX < -max) {
       springTo(clamp(currentX, -max, 0));
     } else {
@@ -382,92 +397,48 @@ function initCarousel(container) {
     }
   }
 
-  /* ── Mouse events (bound on document so drag survives leaving the track) ── */
+  // ── Mouse events — desktop only ──
+  // Bound to track saja bukan document, cukup untuk desktop
 
   track.addEventListener('mousedown', function (e) {
     e.preventDefault();
-    onStart(e.clientX);
+    onStart(e.clientX, e.clientY);
   });
 
-  document.addEventListener('mousemove', function (e) {
-    if (isDragging) onMove(e.clientX);
+  // mousemove & mouseup ke window supaya drag tetap jalan kalau keluar track
+  window.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    onMove(e.clientX, e.clientY, e);
   });
 
-  document.addEventListener('mouseup', function () {
+  window.addEventListener('mouseup', function () {
     if (isDragging) onEnd();
   });
 
-  /* ── Touch events ── */
+  // ── Touch events — mobile ──
+  // passive: false HANYA saat sudah tahu horizontal,
+  // supaya bisa preventDefault dan cegah scroll halaman
 
   track.addEventListener('touchstart', function (e) {
-    onStart(e.touches[0].clientX);
-  }, { passive: true });
+    onStart(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });  // touchstart boleh passive
 
   track.addEventListener('touchmove', function (e) {
-    if (isDragging) onMove(e.touches[0].clientX);
-  }, { passive: true });
+    if (!isDragging) return;
+    onMove(e.touches[0].clientX, e.touches[0].clientY, e);
+  }, { passive: false });  // HARUS non-passive agar bisa preventDefault
 
   track.addEventListener('touchend',    onEnd, { passive: true });
   track.addEventListener('touchcancel', onEnd, { passive: true });
 
-  /* ── Resize guard ── */
+  // ── Resize ──
 
   window.addEventListener('resize', function () {
-    const max = maxScroll();
+    var max = maxScroll();
     if (currentX < -max) applyTranslate(-max);
     updateGradients();
   });
 
-  /* ── Init ── */
+  // ── Init ──
   updateGradients();
 }
-
-
-// Ghost reveal — Coffee & Space
-(function () {
-  const el = document.querySelector('.title-line.accent');
-  if (!el) return;
-
-  const FADE_IN_MS  = 1400;
-  const HOLD_MS     = 1800;
-  const FADE_OUT_MS = 1000;
-  const PAUSE_MS    = 600;
-  const BLUR_MAX    = 20;
-
-  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-  function easeInCubic(t)  { return t * t * t; }
-
-  function animate(duration, easing, onTick, onDone) {
-    var startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var raw = Math.min((ts - startTime) / duration, 1);
-      onTick(easing(raw));
-      if (raw < 1) requestAnimationFrame(step);
-      else if (onDone) onDone();
-    }
-    requestAnimationFrame(step);
-  }
-
-  function runCycle() {
-    animate(FADE_IN_MS, easeOutCubic, function (p) {
-      el.style.opacity = p;
-      el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(1 - p, 2)).toFixed(2) + 'px)';
-    }, function () {
-      el.style.opacity = 1;
-      el.style.filter  = 'blur(0px)';
-      setTimeout(function () {
-        animate(FADE_OUT_MS, easeInCubic, function (p) {
-          el.style.opacity = 1 - p;
-          el.style.filter  = 'blur(' + (BLUR_MAX * Math.pow(p, 1.8)).toFixed(2) + 'px)';
-        }, function () {
-          el.style.opacity = 0;
-          el.style.filter  = 'blur(' + BLUR_MAX + 'px)';
-          setTimeout(runCycle, PAUSE_MS);
-        });
-      }, HOLD_MS);
-    });
-  }
-
-  setTimeout(runCycle, 400);
-})();
