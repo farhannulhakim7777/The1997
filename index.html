@@ -7,13 +7,16 @@
   <title>The 1997 Coffee and Space</title>
   <link rel="icon" type="image/png" href="/img/logo.png">
 
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
@@ -25,7 +28,7 @@
     <div class="float-circle circle-3"></div>
   </div>
 
-  <!-- Navbar -->
+  <!-- ==================== NAVBAR ==================== -->
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">
@@ -33,11 +36,11 @@
       </div>
 
       <nav class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#home"     class="nav-link">Home</a>
+        <a href="#menu"     class="nav-link">Menu</a>
+        <a href="#gallery"  class="nav-link">Gallery</a>
         <a href="#location" class="nav-link">Location</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact"  class="nav-link">Contact</a>
       </nav>
 
       <a href="#contact" class="btn-reserve-nav">Reserve</a>
@@ -48,27 +51,14 @@
     </div>
   </header>
 
-
-
-  <!-- Hero Section -->
+  <!-- ==================== HERO ==================== -->
   <section id="home" class="hero">
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <div class="hero-badge">Est. 2019</div>
       <h1 class="hero-title">
         <span class="title-line">The 1997</span>
         <span class="title-line accent">Coffee & Space</span>
       </h1>
-      <p class="hero-tagline">its not living if its not with you</p>
-      <div class="hero-cta">
-        <a href="#menu" class="btn-primary">
-          <span>Explore Menu</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
-        <a href="#gallery" class="btn-secondary">
-          <span>View Gallery</span>
-        </a>
-      </div>
     </div>
     <div class="hero-scroll">
       <span>Scroll to explore</span>
@@ -76,7 +66,7 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- ==================== ABOUT ==================== -->
   <section class="about-section">
     <div class="section-header centered">
       <span class="section-label">Our Story</span>
@@ -87,850 +77,235 @@
       <div class="about-text-wrapper">
         <p class="about-text">
           The 1997 Coffee and Space is a spacious, community-driven coffee house designed for thinkers, creators, and
-          dreamers.
-          Inspired by 90s nostalgia and modern space aesthetics, we serve more than coffee, we serve experiences.
+          dreamers. Inspired by 90s nostalgia and modern space aesthetics, we serve more than coffee — we serve experiences.
         </p>
       </div>
 
       <div class="about-stats">
         <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-heart"></i>
-          </div>
+          <div class="stat-icon"><i class="fas fa-heart"></i></div>
           <h3 class="stat-number">25K+</h3>
           <p class="stat-label">Happy Customers</p>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-mug-hot"></i>
-          </div>
+          <div class="stat-icon"><i class="fas fa-mug-hot"></i></div>
           <h3 class="stat-number">50+</h3>
           <p class="stat-label">Menu Items</p>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <h3 class="stat-number">6</h3>
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <h3 class="stat-number">3</h3>
           <p class="stat-label">Years Serving</p>
         </div>
       </div>
     </div>
   </section>
 
- <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Section</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- ==================== MENU ==================== -->
+  <section id="menu" class="menu-section">
 
-    :root {
-      --bg: #111110;
-      --surface: #1c1c1a;
-      --amber: #f59e0b;
-      --amber-dim: rgba(245,158,11,0.12);
-      --orange: #fb923c;
-      --orange-dim: rgba(251,146,60,0.12);
-      --white: #f5f0e8;
-      --muted: #6b7280;
-      --border: rgba(255,255,255,0.06);
-    }
-
-    body {
-      background: var(--bg);
-      font-family: 'DM Sans', sans-serif;
-      color: var(--white);
-    }
-
-    /* ── SECTION ── */
-    .menu-section {
-      padding: 6rem 1.5rem 5rem;
-      background: var(--bg);
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle background texture */
-    .menu-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(245,158,11,0.04) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 80% 80%, rgba(251,146,60,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* ── HEADER ── */
-    .section-header {
-      text-align: center;
-      margin-bottom: 4.5rem;
-      position: relative;
-    }
-
-    .section-label {
-      display: inline-block;
-      padding: 0.35rem 1.1rem;
-      background: var(--amber-dim);
-      color: var(--amber);
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(245,158,11,0.2);
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      line-height: 1;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--amber);
-    }
-
-    .section-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-
-    /* ── CAROUSEL SECTION ── */
-    .carousel-section {
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-
-    .carousel-header {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      margin-bottom: 1.5rem;
-      padding: 0 0.25rem;
-    }
-
-    .carousel-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .carousel-icon.drinks {
-      background: var(--amber-dim);
-      color: var(--amber);
-      border: 1px solid rgba(245,158,11,0.2);
-    }
-
-    .carousel-icon.foods {
-      background: var(--orange-dim);
-      color: var(--orange);
-      border: 1px solid rgba(251,146,60,0.2);
-    }
-
-    .carousel-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.375rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .carousel-hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .carousel-hint::before {
-      content: '';
-      display: inline-block;
-      width: 16px;
-      height: 2px;
-      background: var(--muted);
-      border-radius: 1px;
-    }
-
-    /* ── CAROUSEL CORE ── */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      padding: 1.25rem 0.25rem 1.5rem;
-      margin: 0 -0.25rem;
-      touch-action: pan-y;
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: grab;
-    }
-
-    .carousel-container:active {
-      cursor: grabbing;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 1.25rem;
-      will-change: transform;
-      /* NO transition here — JS handles momentum directly */
-    }
-
-    .carousel-track.is-dragging {
-      cursor: grabbing;
-    }
-
-    .carousel-track img,
-    .carousel-track a {
-      pointer-events: none;
-      -webkit-user-drag: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* Gradient fades */
-    .gradient-left,
-    .gradient-right {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 80px;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 10;
-    }
-
-    .gradient-left  { left: 0;  background: linear-gradient(to right, var(--bg), transparent); }
-    .gradient-right { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
-
-    .carousel-container.can-scroll-left  .gradient-left  { opacity: 1; }
-    .carousel-container.can-scroll-right .gradient-right { opacity: 1; }
-
-    /* ── MENU CARD ── */
-    .menu-card {
-      flex-shrink: 0;
-      width: 260px;
-      position: relative;
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-    }
-
-    .menu-card:hover {
-      transform: translateY(-10px);
-    }
-
-    /* Wrapper = the white "frame" card */
-    .menu-image-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: #f5f0e8;
-      border-radius: 20px;
-      padding: 0.875rem;
-      overflow: hidden;
-      box-shadow:
-        0 2px 8px rgba(0,0,0,0.25),
-        0 0 0 1px rgba(255,255,255,0.04) inset;
-      transition: box-shadow 0.35s ease;
-    }
-
-    .menu-card:hover .menu-image-wrapper {
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.45),
-        0 0 0 1px rgba(255,255,255,0.06) inset;
-    }
-
-    .menu-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      transition: transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
-      /* Fallback gradient if image 404 */
-      background: linear-gradient(135deg, #2a2a28, #1a1a18);
-    }
-
-    .menu-card:hover .menu-image-wrapper img {
-      transform: scale(1.07);
-    }
-
-    /* Overlay on hover */
-    .menu-overlay {
-      position: absolute;
-      inset: 0.875rem;
-      background: linear-gradient(
-        to top,
-        rgba(10,10,8,0.82) 0%,
-        rgba(10,10,8,0.25) 45%,
-        transparent 100%
-      );
-      border-radius: 12px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 1.25rem;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-
-    .menu-card:hover .menu-overlay {
-      opacity: 1;
-    }
-
-    /* Mobile: always show overlay dim */
-    @media (hover: none) {
-      .menu-overlay {
-        opacity: 1;
-        background: linear-gradient(
-          to top,
-          rgba(10,10,8,0.7) 0%,
-          transparent 60%
-        );
-      }
-      .menu-title-overlay {
-        transform: translateY(0) !important;
-      }
-    }
-
-    .menu-title-overlay {
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-align: center;
-      transform: translateY(8px);
-      transition: transform 0.35s ease;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    .menu-card:hover .menu-title-overlay {
-      transform: translateY(0);
-    }
-
-    /* Card label below */
-    .card-title {
-      text-align: center;
-      margin-top: 0.875rem;
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(245,240,232,0.85);
-      letter-spacing: 0.01em;
-      transition: color 0.3s ease;
-    }
-
-    .menu-card:hover .card-title {
-      color: var(--amber);
-    }
-
-    /* ── BADGE ── */
-    .menu-badge-large {
-      position: absolute;
-      top: 1.375rem;
-      right: 1.375rem;
-      padding: 0.3rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-      z-index: 10;
-      transition: transform 0.3s ease;
-    }
-
-    .menu-card:hover .menu-badge-large {
-      transform: scale(1.08);
-    }
-
-    .menu-badge-large.signature  { background: rgba(254,243,199,0.92); color: #92400e; }
-    .menu-badge-large.classic    { background: rgba(243,244,246,0.92); color: #374151; }
-    .menu-badge-large.refreshing { background: rgba(207,250,254,0.92); color: #155e75; }
-    .menu-badge-large.fruity     { background: rgba(254,226,226,0.92); color: #991b1b; }
-    .menu-badge-large.tasty      { background: rgba(255,237,213,0.92); color: #9a3412; }
-    .menu-badge-large.savory     { background: rgba(254,249,195,0.92); color: #854d0e; }
-
-    /* ── SWIPE HINT ── */
-    .swipe-hint {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-
-    .swipe-hint::before,
-    .swipe-hint::after {
-      content: '';
-      display: block;
-      width: 36px;
-      height: 1px;
-      background: #374151;
-    }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 0.25rem 3rem;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .menu-section { padding: 4rem 1rem 4rem; }
-      .menu-card    { width: 230px; }
-      .menu-image-wrapper { padding: 0.75rem; }
-      .menu-overlay       { inset: 0.75rem; }
-      .menu-badge-large   { top: 1.125rem; right: 1.125rem; }
-    }
-
-    @media (max-width: 380px) {
-      .menu-card { width: 200px; }
-    }
-
-    /* Demo placeholder images (colored gradients) */
-    .img-placeholder {
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-
-<section id="menu" class="menu-section">
-
-  <!-- Header -->
-  <div class="section-header">
-    <span class="section-label">Our Specialties</span>
-    <h2 class="section-title">Our <em>Menu</em></h2>
-    <p class="section-subtitle">Explore our carefully curated selection</p>
-  </div>
-
-  <!-- DRINKS CAROUSEL -->
-  <div class="carousel-section">
-    <div class="carousel-header">
-      <div class="carousel-icon drinks">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-          <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
-          <line x1="6" x2="6.01" y1="2" y2="2"/>
-          <line x1="10" x2="10.01" y1="2" y2="2"/>
-          <line x1="14" x2="14.01" y1="2" y2="2"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="carousel-title">Beverages</h3>
-        <p class="carousel-hint">Swipe to explore our drinks</p>
-      </div>
+    <div class="section-header centered">
+      <span class="section-label">Our Specialties</span>
+      <h2 class="section-title">Our <em>Menu</em></h2>
+      <p class="section-subtitle">Explore our carefully curated selection</p>
     </div>
 
-    <div class="carousel-container" id="drinks-carousel">
-      <div class="carousel-track">
-
-        <!-- Card 1 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/kopiS.png" alt="Signature Coffee"
-              onerror="this.style.background='linear-gradient(135deg,#78350f,#d97706)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Signature Coffee</h3>
-            </div>
-          </div>
-          <div class="menu-badge-large signature">Signature</div>
-          <h4 class="card-title">Signature Coffee</h4>
+    <!-- DRINKS CAROUSEL -->
+    <div class="carousel-section">
+      <div class="carousel-header">
+        <div class="carousel-icon drinks">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+            <line x1="6" x2="6.01" y1="2" y2="2"/>
+            <line x1="10" x2="10.01" y1="2" y2="2"/>
+            <line x1="14" x2="14.01" y1="2" y2="2"/>
+          </svg>
         </div>
-
-        <!-- Card 2 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/kopi2.png" alt="Black & White"
-              onerror="this.style.background='linear-gradient(135deg,#1c1917,#57534e)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Black & White</h3>
-            </div>
-          </div>
-          <div class="menu-badge-large classic">Classic</div>
-          <h4 class="card-title">Black & White</h4>
+        <div>
+          <h3 class="carousel-title">Beverages</h3>
+          <p class="carousel-hint">Swipe to explore our drinks</p>
         </div>
-
-        <!-- Card 3 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/icebland.png" alt="Ice Blend"
-              onerror="this.style.background='linear-gradient(135deg,#0e7490,#67e8f9)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Ice Blend & Latte</h3>
-            </div>
-          </div>
-          <div class="menu-badge-large refreshing">Refreshing</div>
-          <h4 class="card-title">Ice Blend & Latte</h4>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/mocktails.png" alt="Mocktail"
-              onerror="this.style.background='linear-gradient(135deg,#be123c,#fb7185)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Mocktails & Mojitos</h3>
-            </div>
-          </div>
-          <div class="menu-badge-large fruity">Fruity</div>
-          <h4 class="card-title">Mocktails & Mojitos</h4>
-        </div>
-
       </div>
-      <div class="gradient-left"></div>
-      <div class="gradient-right"></div>
-    </div>
-  </div>
 
-  <div class="section-divider"></div>
+      <div class="carousel-container" id="drinks-carousel">
+        <div class="carousel-track">
 
-  <!-- FOODS CAROUSEL -->
-  <div class="carousel-section">
-    <div class="carousel-header">
-      <div class="carousel-icon foods">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m3 11 18-5v12L3 14v-3z"/>
-          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
-        </svg>
-      </div>
-      <div>
-        <h3 class="carousel-title">Food &amp; Snacks</h3>
-        <p class="carousel-hint">Swipe to explore our dishes</p>
-      </div>
-    </div>
-
-    <div class="carousel-container" id="foods-carousel">
-      <div class="carousel-track">
-
-        <!-- Card 5 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/makanan.png" alt="Food & Snacks"
-              onerror="this.style.background='linear-gradient(135deg,#9a3412,#fb923c)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/kopiS.png" alt="Signature Coffee"
+                onerror="this.style.background='linear-gradient(135deg,#78350f,#d97706)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Signature Coffee</h3>
+              </div>
             </div>
+            <div class="menu-badge-large signature">Signature</div>
+            <h4 class="card-title">Signature Coffee</h4>
           </div>
-          <div class="menu-badge-large tasty">Tasty</div>
-          <h4 class="card-title">Food &amp; Snacks</h4>
-        </div>
 
-        <!-- Card 6 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/makanan2.png" alt="Food"
-              onerror="this.style.background='linear-gradient(135deg,#713f12,#fbbf24)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/kopi2.png" alt="Black & White"
+                onerror="this.style.background='linear-gradient(135deg,#1c1917,#57534e)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Black &amp; White</h3>
+              </div>
             </div>
+            <div class="menu-badge-large classic">Classic</div>
+            <h4 class="card-title">Black &amp; White</h4>
           </div>
-          <div class="menu-badge-large tasty">Tasty</div>
-          <h4 class="card-title">Food &amp; Snacks</h4>
-        </div>
 
-        <!-- Card 7 -->
-        <div class="menu-card">
-          <div class="menu-image-wrapper">
-            <img src="/glr/burger.png" alt="Burger"
-              onerror="this.style.background='linear-gradient(135deg,#854d0e,#fde047)';this.style.borderRadius='12px'"
-              draggable="false">
-            <div class="menu-overlay">
-              <h3 class="menu-title-overlay">Burger</h3>
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/icebland.png" alt="Ice Blend"
+                onerror="this.style.background='linear-gradient(135deg,#0e7490,#67e8f9)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Ice Blend &amp; Latte</h3>
+              </div>
             </div>
+            <div class="menu-badge-large refreshing">Refreshing</div>
+            <h4 class="card-title">Ice Blend &amp; Latte</h4>
           </div>
-          <div class="menu-badge-large savory">Savory</div>
-          <h4 class="card-title">Burger</h4>
-        </div>
 
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/mocktails.png" alt="Mocktail"
+                onerror="this.style.background='linear-gradient(135deg,#be123c,#fb7185)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Mocktails &amp; Mojitos</h3>
+              </div>
+            </div>
+            <div class="menu-badge-large fruity">Fruity</div>
+            <h4 class="card-title">Mocktails &amp; Mojitos</h4>
+          </div>
+
+        </div>
+        <div class="gradient-left"></div>
+        <div class="gradient-right"></div>
       </div>
-      <div class="gradient-left"></div>
-      <div class="gradient-right"></div>
-    </div>
-  </div>
+    </div><!-- /drinks carousel -->
 
-  <!-- Swipe hint -->
-  <p class="swipe-hint">Swipe left or right to explore</p>
+    <div class="section-divider"></div>
 
-</section>
+    <!-- FOODS CAROUSEL -->
+    <div class="carousel-section">
+      <div class="carousel-header">
+        <div class="carousel-icon foods">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 11 18-5v12L3 14v-3z"/>
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="carousel-title">Food &amp; Snacks</h3>
+          <p class="carousel-hint">Swipe to explore our dishes</p>
+        </div>
+      </div>
 
-<script>
-(function () {
-  'use strict';
+      <div class="carousel-container" id="foods-carousel">
+        <div class="carousel-track">
 
-  function initCarousel(container) {
-    const track = container.querySelector('.carousel-track');
-    if (!track) return;
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/makanan.png" alt="Food & Snacks"
+                onerror="this.style.background='linear-gradient(135deg,#9a3412,#fb923c)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
+              </div>
+            </div>
+            <div class="menu-badge-large tasty">Tasty</div>
+            <h4 class="card-title">Food &amp; Snacks</h4>
+          </div>
 
-    let isDragging    = false;
-    let startX        = 0;
-    let currentX      = 0;   // current translateX value
-    let startTranslate= 0;   // translateX when drag began
-    let velocity      = 0;
-    let lastX         = 0;
-    let lastTime      = 0;
-    let rafID         = null;
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/makanan2.png" alt="Food"
+                onerror="this.style.background='linear-gradient(135deg,#713f12,#fbbf24)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Food &amp; Snacks</h3>
+              </div>
+            </div>
+            <div class="menu-badge-large tasty">Tasty</div>
+            <h4 class="card-title">Food &amp; Snacks</h4>
+          </div>
 
-    /* ── Helpers ── */
-    function maxScroll() {
-      return Math.max(0, track.scrollWidth - container.clientWidth);
-    }
+          <div class="menu-card">
+            <div class="menu-image-wrapper">
+              <img src="/glr/burger.png" alt="Burger"
+                onerror="this.style.background='linear-gradient(135deg,#854d0e,#fde047)';this.style.borderRadius='12px'"
+                draggable="false">
+              <div class="menu-overlay">
+                <h3 class="menu-title-overlay">Burger</h3>
+              </div>
+            </div>
+            <div class="menu-badge-large savory">Savory</div>
+            <h4 class="card-title">Burger</h4>
+          </div>
 
-    function clamp(val, min, max) {
-      return Math.min(Math.max(val, min), max);
-    }
+        </div>
+        <div class="gradient-left"></div>
+        <div class="gradient-right"></div>
+      </div>
+    </div><!-- /foods carousel -->
 
-    function applyTranslate(x) {
-      currentX = x;
-      track.style.transform = 'translateX(' + x + 'px)';
-      updateGradients();
-    }
+    <p class="swipe-hint">Swipe left or right to explore</p>
 
-    function snapToEdge() {
-      const max = maxScroll();
-      if (currentX > 0)    applyTranslate(0);
-      if (currentX < -max) applyTranslate(-max);
-    }
+  </section><!-- /menu -->
 
-    function updateGradients() {
-      const max = maxScroll();
-      container.classList.toggle('can-scroll-left',  currentX < -4);
-      container.classList.toggle('can-scroll-right', currentX > -(max - 4) && max > 0);
-    }
-
-    /* ── Momentum loop ── */
-    function momentumTick() {
-      if (Math.abs(velocity) < 0.2) {
-        snapToEdge();
-        rafID = null;
-        return;
-      }
-
-      const max  = maxScroll();
-      let newX   = currentX + velocity;
-      velocity  *= 0.90;          // friction — tune between 0.88–0.94
-
-      // Hard stop at edges
-      if (newX > 0)    { newX = 0; velocity = 0; }
-      if (newX < -max) { newX = -max; velocity = 0; }
-
-      applyTranslate(newX);
-      rafID = requestAnimationFrame(momentumTick);
-    }
-
-    /* ── Drag start ── */
-    function onStart(clientX) {
-      if (rafID) { cancelAnimationFrame(rafID); rafID = null; }
-
-      isDragging    = true;
-      startX        = clientX;
-      startTranslate= currentX;
-      lastX         = clientX;
-      lastTime      = performance.now();
-      velocity      = 0;
-
-      track.classList.add('is-dragging');
-    }
-
-    /* ── Drag move ── */
-    function onMove(clientX) {
-      if (!isDragging) return;
-
-      const delta = clientX - startX;
-      const max   = maxScroll();
-      let newX    = startTranslate + delta;
-
-      // Rubber-band resistance past edges
-      if (newX > 0)      newX = newX * 0.22;
-      if (newX < -max)   newX = -max + (newX + max) * 0.22;
-
-      applyTranslate(newX);
-
-      // Velocity sampling (px/ms * multiplier for natural feel)
-      const now = performance.now();
-      const dt  = now - lastTime;
-      if (dt > 0) velocity = ((clientX - lastX) / dt) * 14;
-      lastX    = clientX;
-      lastTime = now;
-    }
-
-    /* ── Drag end ── */
-    function onEnd() {
-      if (!isDragging) return;
-      isDragging = false;
-      track.classList.remove('is-dragging');
-
-      const max = maxScroll();
-      if (currentX > 0 || currentX < -max) {
-        // Spring back with ease
-        const target = clamp(currentX, -max, 0);
-        springTo(target);
-      } else {
-        rafID = requestAnimationFrame(momentumTick);
-      }
-    }
-
-    /* ── Spring back to target ── */
-    function springTo(target) {
-      const STIFFNESS = 0.18;
-      function tick() {
-        const diff = target - currentX;
-        if (Math.abs(diff) < 0.5) { applyTranslate(target); rafID = null; return; }
-        applyTranslate(currentX + diff * STIFFNESS);
-        rafID = requestAnimationFrame(tick);
-      }
-      rafID = requestAnimationFrame(tick);
-    }
-
-    /* ── Mouse events ── */
-    track.addEventListener('mousedown', function (e) {
-      e.preventDefault();
-      onStart(e.clientX);
-    });
-
-    document.addEventListener('mousemove', function (e) {
-      if (!isDragging) return;
-      onMove(e.clientX);
-    });
-
-    document.addEventListener('mouseup', function () {
-      if (isDragging) onEnd();
-    });
-
-    /* ── Touch events ── */
-    track.addEventListener('touchstart', function (e) {
-      onStart(e.touches[0].clientX);
-    }, { passive: true });
-
-    track.addEventListener('touchmove', function (e) {
-      if (!isDragging) return;
-      onMove(e.touches[0].clientX);
-    }, { passive: true });
-
-    track.addEventListener('touchend',   onEnd, { passive: true });
-    track.addEventListener('touchcancel',onEnd, { passive: true });
-
-    /* ── Resize guard ── */
-    window.addEventListener('resize', function () {
-      const max = maxScroll();
-      if (currentX < -max) applyTranslate(-max);
-      updateGradients();
-    });
-
-    /* ── Init ── */
-    updateGradients();
-  }
-
-  /* Init all carousels on DOM ready */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
-
-  function boot() {
-    document.querySelectorAll('.carousel-container').forEach(initCarousel);
-  }
-})();
-</script>
-</body>
-</html>
-
-
-  <!-- Gallery Section -->
+  <!-- ==================== GALLERY ==================== -->
   <section id="gallery" class="gallery-section">
     <div class="section-header centered">
       <span class="section-label">Atmosphere</span>
-      <h2 class="section-title">Moments, Vibes & Space</h2>
+      <h2 class="section-title">Moments, Vibes &amp; Space</h2>
       <p class="section-subtitle">Where every corner tells a story</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-item large">
         <img src="/img/foto1.jpg" alt="Cafe Interior">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
       <div class="gallery-item">
         <img src="/img/foto2.jpg" alt="Coffee Bar">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
       <div class="gallery-item">
         <img src="/img/foto3.jpg" alt="Latte Art">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
       <div class="gallery-item tall">
         <img src="/img/foto4.jpg" alt="Community Space">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
       <div class="gallery-item">
         <img src="/img/foto5.jpg" alt="Dessert">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
       <div class="gallery-item">
         <img src="/img/foto7.jpg" alt="Night Vibes">
-        <div class="gallery-overlay">
-          <span class="gallery-label"></span>
-        </div>
+        <div class="gallery-overlay"><span class="gallery-label"></span></div>
       </div>
     </div>
   </section>
 
-  <!-- Location Section -->
+  <!-- ==================== LOCATION ==================== -->
   <section id="location" class="location-section">
     <div class="location-container">
       <div class="location-content">
         <div class="section-header centered">
-          <span class="section-label centered">Visit Us</span>
-          <h2 class="section-title centered">Find Your Space</h2>
+          <span class="section-label">Visit Us</span>
+          <h2 class="section-title">Find Your Space</h2>
         </div>
 
         <div class="location-info-card">
           <div class="info-block">
-            <div class="info-icon">
-              <i class="fas fa-clock"></i>
-            </div>
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
             <div class="info-text">
               <h3>Opening Hours</h3>
               <p>Monday – Sunday</p>
@@ -939,9 +314,7 @@
           </div>
 
           <div class="info-block">
-            <div class="info-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="info-text">
               <h3>Address</h3>
               <p>Jl. Raya Panongan</p>
@@ -950,9 +323,7 @@
           </div>
 
           <div class="info-block">
-            <div class="info-icon">
-              <i class="fas fa-phone"></i>
-            </div>
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
             <div class="info-text">
               <h3>Contact</h3>
               <p>Phone / WhatsApp:</p>
@@ -965,14 +336,16 @@
 
       <div class="map-wrapper">
         <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe
+            src="https://www.google.com/maps?q=Jl.%20Raya%20Panongan,%20Kab.%20Tangerang,%20Banten&output=embed"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- ==================== CONTACT ==================== -->
   <section id="contact" class="contact-section">
     <div class="section-header centered">
       <span class="section-label">Get in Touch</span>
@@ -1013,17 +386,16 @@
           <span>Send via WhatsApp</span>
         </button>
       </form>
-
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
         <h3 class="footer-logo">
           <span class="logo-number">1997</span>
-          <span class="logo-text">Coffee & Space</span>
+          <span class="logo-text">Coffee &amp; Space</span>
         </h3>
         <p class="footer-tagline">its not living if its not with you</p>
         <div class="social-icons">
@@ -1047,7 +419,7 @@
 
       <div class="footer-location">
         <h4>Visit Us</h4>
-        <p>Jl. Raya Panongan<br />Panongan, Tangerang, Banten</p>
+        <p>Jl. Raya Panongan<br>Panongan, Tangerang, Banten</p>
         <p class="footer-hours">Mon - Sun: 10 AM - 12 AM</p>
       </div>
     </div>
@@ -1057,7 +429,8 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="/js/main.js"></script>
-</body>
 
+</body>
 </html>
