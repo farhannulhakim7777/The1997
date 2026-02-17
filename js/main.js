@@ -264,11 +264,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // ─── PARALLAX (scroll event — di luar DOMContentLoaded) ──────────────────────
 
 window.addEventListener('scroll', function () {
-  var scrolled = window.pageYOffset;
-
-  document.querySelectorAll('.float-circle').forEach(function (circle, i) {
-    circle.style.transform = 'translateY(' + (scrolled * (0.08 + i * 0.04)) + 'px)';
-  });
+  // Float circle parallax dihapus — circle pakai CSS animation saja
+  // transform dari JS bisa bikin horizontal overflow di mobile
 }, { passive: true });
 
 
