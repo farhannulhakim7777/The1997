@@ -1,0 +1,100 @@
+/* ===============================================
+   CSS VARIABLES - THEME SYSTEM
+   =============================================== */
+
+:root {
+  /* === LIGHT MODE COLORS === */
+  
+  /* Neutral Base (60%) */
+  --color-white: #ffffff;
+  --color-off-white: #fafafa;
+  --color-light-gray: #f5f7fa;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  
+  /* Pink Pastel (30%) */
+  --color-pink-primary: #ffb6d9;
+  --color-pink-light: #ffd4e9;
+  --color-pink-dark: #ff9ac9;
+  --color-pink-accent: #ff85c0;
+  
+  /* Soft Cyan (10%) */
+  --color-cyan-primary: #a8e6e3;
+  --color-cyan-light: #c4f1ee;
+  --color-cyan-dark: #8dd9d6;
+  
+  /* Text Colors */
+  --color-text-primary: #2d3436;
+  --color-text-secondary: #636e72;
+  --color-text-light: #b2bec3;
+  --color-text-muted: #9ca3af;
+  
+  /* Glassmorphism */
+  --glass-white: rgba(255, 255, 255, 0.7);
+  --glass-white-light: rgba(255, 255, 255, 0.5);
+  --glass-pink: rgba(255, 182, 217, 0.15);
+  --glass-cyan: rgba(168, 230, 227, 0.15);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-pink-sm: 0 4px 12px rgba(255, 182, 217, 0.2);
+  --shadow-pink-md: 0 8px 24px rgba(255, 182, 217, 0.25);
+  --shadow-pink-lg: 0 16px 48px rgba(255, 182, 217, 0.3);
+  --shadow-cyan-sm: 0 4px 12px rgba(168, 230, 227, 0.2);
+  --shadow-cyan-md: 0 8px 24px rgba(168, 230, 227, 0.25);
+  --shadow-mixed: 0 12px 32px rgba(255, 182, 217, 0.2), 0 8px 16px rgba(168, 230, 227, 0.15);
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+  
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-full: 999px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Menu Section Colors */
+  --menu-bg: #f8f4f0;
+  --menu-amber: #f59e0b;
+  --menu-amber-dim: rgba(245, 158, 11, 0.12);
+  --menu-orange: #fb923c;
+  --menu-orange-dim: rgba(251, 146, 60, 0.12);
+  --menu-white: #2d3436;
+  --menu-muted: #636e72;
+  --menu-border: rgba(0, 0, 0, 0.08);
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* === REDUCED MOTION === */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

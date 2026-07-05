@@ -1,0 +1,90 @@
+/* ===============================================
+   NOTIFICATIONS
+   =============================================== */
+
+.notification {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  z-index: var(--z-tooltip);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  max-width: 350px;
+}
+
+.notification.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification-error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
+}
+
+.notification-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.notification-info {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+}
+
+.notification-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+/* Responsive */
+/* Small Phone (≤ 380px) */
+@media (max-width: 380px) {
+  .notification {
+    right: 15px;
+    left: 15px;
+    top: 80px;
+    max-width: none;
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Large Phone (381px - 480px) */
+@media (min-width: 381px) and (max-width: 480px) {
+  .notification {
+    right: 20px;
+    left: 20px;
+    top: 80px;
+    max-width: none;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .notification {
+    right: 25px;
+    left: 25px;
+    top: 80px;
+    max-width: none;
+  }
+}
+
+/* Desktop (≥ 769px) */
+@media (min-width: 769px) {
+  .notification {
+    right: 30px;
+    left: auto;
+    top: 100px;
+    max-width: 350px;
+  }
+}

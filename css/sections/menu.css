@@ -1,0 +1,347 @@
+/* ===============================================
+   MENU SECTION - SIMPLE CARD SLIDER
+   =============================================== */
+
+.menu-section {
+  padding: 6rem 1.5rem 5rem;
+  background: var(--menu-bg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Section overrides */
+.menu-section .section-label {
+  background: var(--menu-amber-dim);
+  color: var(--menu-amber);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  -webkit-text-fill-color: unset;
+}
+
+.menu-section .section-title {
+  color: var(--menu-white);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.menu-section .section-title em {
+  font-style: italic;
+  color: var(--menu-amber);
+}
+
+.menu-section .section-subtitle {
+  color: var(--menu-muted);
+}
+
+/* Menu Controls */
+.menu-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.menu-filter {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  background: var(--menu-amber-dim);
+  color: var(--menu-amber);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--menu-amber);
+  color: var(--menu-bg);
+}
+
+/* Menu Slider */
+.menu-slider {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.menu-slider-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 1rem 0;
+}
+
+.menu-slide {
+  flex-shrink: 0;
+  width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-slide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.menu-slide-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.menu-slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.menu-slide:hover .menu-slide-image img {
+  transform: scale(1.05);
+}
+
+.menu-slide-content {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.menu-slide-badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.menu-slide-badge.signature  { background: rgba(254, 243, 199, 0.92); color: #92400e; }
+.menu-slide-badge.classic    { background: rgba(243, 244, 246, 0.92); color: #374151; }
+.menu-slide-badge.refreshing { background: rgba(207, 250, 254, 0.92); color: #155e75; }
+.menu-slide-badge.fruity     { background: rgba(254, 226, 226, 0.92); color: #991b1b; }
+.menu-slide-badge.tasty      { background: rgba(255, 237, 213, 0.92); color: #9a3412; }
+.menu-slide-badge.savory     { background: rgba(254, 249, 195, 0.92); color: #854d0e; }
+
+.menu-slide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Slider Navigation */
+.slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.slider-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--menu-amber);
+  color: var(--menu-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.slider-btn:hover {
+  background: var(--menu-orange);
+  transform: scale(1.1);
+}
+
+.slider-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.slider-dot.active {
+  background: var(--menu-amber);
+  width: 30px;
+  border-radius: 5px;
+}
+
+.slider-dot:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.slider-dot.active:hover {
+  background: var(--menu-amber);
+}
+
+/* Responsive */
+/* Small Phone (≤ 380px) */
+@media (max-width: 380px) {
+  .menu-section {
+    padding: 3rem 0.75rem 4rem;
+  }
+
+  .menu-filter {
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .menu-slide {
+    width: calc(100vw - 2rem);
+    max-width: 240px;
+  }
+
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .slider-nav {
+    gap: 0.75rem;
+  }
+}
+
+/* Large Phone (381px - 480px) */
+@media (min-width: 381px) and (max-width: 480px) {
+  .menu-slide {
+    width: calc(100vw - 2.5rem);
+    max-width: 260px;
+  }
+
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .menu-section {
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .menu-slide {
+    width: 300px;
+  }
+
+  .menu-slider-track {
+    gap: 2.5rem;
+  }
+}
+
+/* Laptop (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .menu-section {
+    padding: 6rem 2rem 5rem;
+  }
+
+  .menu-slider {
+    max-width: 1000px;
+  }
+
+  .menu-slide {
+    width: 280px;
+  }
+
+  .menu-slider-track {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .menu-slider {
+    max-width: 1200px;
+  }
+
+  .menu-slide {
+    width: 300px;
+  }
+}
+
+/* Large Desktop (≥ 1441px) */
+@media (min-width: 1441px) {
+  .menu-slider {
+    max-width: 1400px;
+  }
+
+  .menu-slide {
+    width: 320px;
+  }
+}
+
+/* Mobile Fallback (≤ 768px) */
+@media (max-width: 768px) {
+  .menu-section {
+    padding: 4rem 1rem 5rem;
+  }
+
+  .menu-controls {
+    margin-bottom: 2rem;
+  }
+
+  .menu-filter {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .menu-slide {
+    width: calc(100vw - 3rem);
+    max-width: 280px;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .slider-nav {
+    gap: 1rem;
+  }
+}

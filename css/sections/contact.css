@@ -1,0 +1,117 @@
+/* ===============================================
+   CONTACT SECTION
+   =============================================== */
+
+.contact-section {
+  padding: var(--spacing-xl) 2rem calc(var(--spacing-xl) * 1.5);
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-wrapper {
+  margin-top: var(--spacing-lg);
+}
+
+.contact-form {
+  background: var(--glass-white);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  border: 1px solid rgba(168, 230, 227, 0.2);
+  box-shadow: var(--shadow-mixed);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Success toast */
+.success-message {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  background: linear-gradient(135deg, #ffb6d9, #ff9ac9);
+  color: white;
+  padding: 1.25rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(255, 182, 217, 0.4);
+  z-index: var(--z-tooltip);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.success-message.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.success-message i { font-size: 1.5rem; }
+.success-message p { margin: 0; font-weight: 600; font-size: 1rem; }
+
+/* Dark mode - Removed */
+
+/* Responsive */
+/* Small Phone (≤ 380px) */
+@media (max-width: 380px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .success-message {
+    right: 15px;
+    left: 15px;
+    top: 80px;
+  }
+}
+
+/* Large Phone (381px - 480px) */
+@media (min-width: 381px) and (max-width: 480px) {
+  .contact-form {
+    padding: 2rem;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .contact-form {
+    padding: 2.5rem;
+    max-width: 600px;
+  }
+}
+
+/* Laptop (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-form {
+    max-width: 700px;
+  }
+}
+
+/* Desktop (≥ 1025px) */
+@media (min-width: 1025px) {
+  .contact-form {
+    max-width: 800px;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: var(--spacing-lg);
+  }
+
+  .success-message {
+    right: 20px;
+    left: 20px;
+    top: 80px;
+  }
+}

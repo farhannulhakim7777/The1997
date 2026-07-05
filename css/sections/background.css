@@ -1,0 +1,51 @@
+/* ===============================================
+   FLOATING BACKGROUND DECORATION
+   =============================================== */
+
+.bg-decoration {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  clip-path: inset(0);
+}
+
+.float-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 20s ease-in-out infinite;
+  contain: strict;
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, var(--color-pink-light), var(--color-pink-primary));
+  top: -5%;
+  right: -5%;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, var(--color-cyan-light), var(--color-cyan-primary));
+  bottom: 10%;
+  left: -3%;
+  animation-delay: 5s;
+}
+
+.circle-3 {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(135deg, var(--color-pink-accent), var(--color-cyan-primary));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 10s;
+}
+
+/* Dark mode - Removed */
